@@ -8,7 +8,14 @@ namespace _2DTurnBasedGameFramework.Interfaces
 {
     public interface IWorld
     {
-        int Width { get; set; }
-        int Height { get; set; }
+        /// <summary>
+        /// Determines the Width of the world.
+        /// </summary>
+        int X { get; set; }
+
+        /// <summary>
+        /// Determines the Height of the world.
+        /// </summary>
+        int Y { get; set; }
     }
 }

@@ -5,9 +5,4 @@
     <RootNamespace>_2DTurnBasedGameFramework</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
