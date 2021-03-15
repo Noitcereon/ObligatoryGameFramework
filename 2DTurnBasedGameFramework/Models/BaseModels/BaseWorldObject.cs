@@ -9,25 +9,24 @@ using _2DTurnBasedGameFramework.Interfaces;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
-    public abstract class ItemWorldObject : IWorldObject
+    public abstract class BaseWorldObject : IWorldObject
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
         public Point Position { get; set; }
         public bool IsInteractable { get; set; }
         public bool IsRemovable { get; set; }
-        private readonly TraceSource _logger;
+        private readonly TraceSource _logger = new TraceSource("2DTurnBasedGameFramework");
 
-        protected ItemWorldObject(string name, Point position)
+        protected BaseWorldObject(string name, Point position)
         {
-            _logger = new TraceSource("ItemWorldObject", SourceLevels.Information);
             Name = name;
             Position = position;
             IsInteractable = true;
             IsRemovable = true;
         }
 
-        protected ItemWorldObject(string name, Point position, bool isInteractable, bool isRemovable)
+        protected BaseWorldObject(string name, Point position, bool isInteractable, bool isRemovable)
         {
             Name = name;
             IsInteractable = isInteractable;
@@ -39,7 +38,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         {
             if (!IsInteractable) { return; }
 
-            _logger.TraceEvent(TraceEventType.Information, Id);
+            _logger.TraceEvent(TraceEventType.Information, 0, $"{Name} was interacted with. ID: {Id}");
+
             if (IsRemovable)
             {
                 Position = new Point(-1, -1);
