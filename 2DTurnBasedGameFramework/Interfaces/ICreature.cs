@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
 namespace _2DTurnBasedGameFramework.Interfaces
 {
     /// <summary>
-    /// Describes a creatures stats, name, position and atk/defense behaviour.
+    /// Describes a creature's stats, name, position and attack/defense behaviour.
     /// </summary>
     public interface ICreature
     {
@@ -28,6 +24,11 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// The defense stat for the creature. Reduces damage taken from attacks.
         /// </summary>
         int Defense { get; set; }
+
+        /// <summary>
+        /// The creature's default damage range. Range has a From int value and a To int value.
+        /// </summary>
+        Range Damage { get; set; }
 
         /// <summary>
         /// The Spell Power stat for the creature. Increases the effectiveness of spells cast.

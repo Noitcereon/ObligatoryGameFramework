@@ -15,6 +15,9 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public int SpellPower { get; set; }
         public int Hitpoints { get; set; }
 
+        protected BaseItem()
+        {
+        }
         protected BaseItem(int attack, int defense, int spellPower, int hitpoints)
         {
             Attack = attack;

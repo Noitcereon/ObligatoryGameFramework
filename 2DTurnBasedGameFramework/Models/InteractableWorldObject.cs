@@ -13,9 +13,13 @@ namespace _2DTurnBasedGameFramework.Models
     {
         public InteractableWorldObject(string name, Point position) : base(name, position)
         {
-            IsRemovable = true;
             IsInteractable = true;
+            IsRemovable = true;
         }
-        
+
+        public void OnInteraction(ICreature creature)
+        {
+            
+        }
     }
 }
