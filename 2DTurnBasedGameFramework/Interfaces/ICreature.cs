@@ -51,12 +51,16 @@ namespace _2DTurnBasedGameFramework.Interfaces
         bool IsCaster { get; set; }
 
         /// <summary>
-        /// The current position for the creature stack in the world.
+        /// The current position of the creature in the world.
         /// </summary>
         Point Position { get; set; }
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Controls the behavious of the creature, when it encounters an Interactable World Object.
+        /// </summary>
+        void InteractWithWorldObject();
         /// <summary>
         /// Controls the behaviour of the creature, when it is hitting another creature.
         /// </summary>

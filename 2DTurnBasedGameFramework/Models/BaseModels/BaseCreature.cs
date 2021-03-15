@@ -22,6 +22,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 
         public BaseCreature(string name, int attack, int defense, int hitpoints, Range damage, Point position)
         {
+            // TODO: abstract the stats into a Stats class
+            // TODO: make SpellPower to be added with a Decorator if IsCaster = true
             Name = name;
             Damage = damage;
             Attack = attack;
@@ -30,6 +32,11 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Position = position;
             SpellPower = 0;
             IsCaster = false;
+        }
+
+        public void InteractWithWorldObject()
+        {
+            throw new NotImplementedException();
         }
 
         public virtual int Hit()
