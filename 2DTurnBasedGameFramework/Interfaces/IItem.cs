@@ -22,5 +22,10 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// The bonus it gives to Spell Power for the creature holding the item.
         /// </summary>
         int SpellPower { get; set; }
+
+        /// <summary>
+        /// The bonus it gives to Hitpoints for the creature holding the item.
+        /// </summary>
+        int Hitpoints { get; set; }
     }
 }
