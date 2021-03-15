@@ -8,7 +8,10 @@ namespace _2DTurnBasedGameFramework.Interfaces
 {
     public interface IItem
     {
-        int Id { get; set; }
+        /// <summary>
+        /// A GUID for the object.
+        /// </summary>
+        string Id { get; set; }
 
         /// <summary>
         /// The bonus it gives to attack for the creature holding the item.
