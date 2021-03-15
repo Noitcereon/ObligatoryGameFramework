@@ -12,7 +12,7 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// <summary>
         /// A GUID for the object.
         /// </summary>
-        string Id { get; set; }
+        Guid Id { get; set; }
 
         /// <summary>
         /// Determines whether creatures can interact with this object or not.

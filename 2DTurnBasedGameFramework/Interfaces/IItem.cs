@@ -11,7 +11,7 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// <summary>
         /// A GUID for the object.
         /// </summary>
-        string Id { get; set; }
+        Guid Id { get; set; }
 
         /// <summary>
         /// The bonus it gives to attack for the creature holding the item.

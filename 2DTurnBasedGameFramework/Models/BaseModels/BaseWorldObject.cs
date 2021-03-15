@@ -11,12 +11,12 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
     public abstract class BaseWorldObject : IWorldObject
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public Point Position { get; set; }
         public bool IsInteractable { get; set; }
         public bool IsRemovable { get; set; }
-        private readonly TraceSource _logger = new TraceSource("2DTurnBasedGameFramework");
+        protected readonly TraceSource Logger = new TraceSource("2DTurnBasedGameFramework");
 
         protected BaseWorldObject(string name, Point position)
         {
@@ -38,7 +38,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         {
             if (!IsInteractable) { return; }
 
-            _logger.TraceEvent(TraceEventType.Information, 0, $"{Name} was interacted with. ID: {Id}");
+            Logger.TraceEvent(TraceEventType.Information, 0, $"{Name} was interacted with. ID: {Id}");
 
             if (IsRemovable)
             {
