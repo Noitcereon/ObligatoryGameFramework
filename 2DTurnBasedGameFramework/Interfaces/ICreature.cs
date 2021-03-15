@@ -14,6 +14,8 @@ namespace _2DTurnBasedGameFramework.Interfaces
     public interface ICreature
     {
         #region Properties
+        int Id { get; set; }
+
         /// <summary>
         /// The attack stat for the creature. Gives bonus to damage dealt when attacking.
         /// </summary>

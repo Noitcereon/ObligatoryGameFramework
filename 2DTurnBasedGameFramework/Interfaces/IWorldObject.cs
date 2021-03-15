@@ -8,6 +8,8 @@ namespace _2DTurnBasedGameFramework.Interfaces
 {
     public interface IWorldObject
     {
+        int Id { get; set; }
+
         /// <summary>
         /// Determines whether creatures can interact with this object or not.
         /// </summary>
