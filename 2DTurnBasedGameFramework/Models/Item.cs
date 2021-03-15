@@ -9,7 +9,7 @@ namespace _2DTurnBasedGameFramework.Models
 {
     public class Item : IItem
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
         public int SpellPower { get; set; }
