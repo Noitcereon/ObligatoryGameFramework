@@ -16,25 +16,21 @@ namespace _2DTurnBasedGameFramework
 
         /// <summary>
         /// Instantiates a TraceSource and creates and adds listeners to the it.
+        /// See Configuration.xml to change the level at which to log.
         /// </summary>
-        /// <param name="logLevel">Sets the level of log messages you want to receive. Default is <c>SourceLevels.Error</c></param>
-        private static TraceSource InitialiseTraceListener(SourceLevels logLevel = SourceLevels.Error)
+        private static TraceSource InitialiseTraceListener()
         {
-            TraceSource theTraceSource = new TraceSource("2DTurnBasedGameFramework", logLevel);
-
-            EventTypeFilter configFilter = new EventTypeFilter(LoadConfig.SourceLevel());
+            TraceSource theTraceSource = new TraceSource("2DTurnBasedGameFramework", LoadConfig.SourceLevel());
 
             // Text listener
             string loggerFilePath = Directory.GetCurrentDirectory() + "/log.txt";
             using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath));
             TraceListener textListener = new TextWriterTraceListener(sw);
-            textListener.Filter = configFilter;
             theTraceSource.Listeners.Add(textListener);
 
             // Json listener
             string jsonLoggerFilePath = Directory.GetCurrentDirectory() + "/log.json";
             TraceListener jsonListener = new JsonTraceListener(jsonLoggerFilePath);
-            jsonListener.Filter = configFilter;
             theTraceSource.Listeners.Add(jsonListener);
 
             return theTraceSource;
