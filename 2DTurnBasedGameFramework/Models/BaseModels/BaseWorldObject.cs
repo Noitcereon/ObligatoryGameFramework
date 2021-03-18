@@ -16,7 +16,6 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public Point Position { get; set; }
         public bool IsInteractable { get; set; }
         public bool IsRemovable { get; set; }
-        protected readonly TraceSource Logger = new TraceSource("2DTurnBasedGameFramework");
 
         protected BaseWorldObject(string name, Point position)
         {
@@ -38,7 +37,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         {
             if (!IsInteractable) { return; }
 
-            Logger.TraceEvent(TraceEventType.Information, 0, $"{Name} was interacted with. ID: {Id}");
+            Logger.Log(TraceEventType.Information, $"{Name} was interacted with. ID: {Id}");
 
             if (IsRemovable)
             {

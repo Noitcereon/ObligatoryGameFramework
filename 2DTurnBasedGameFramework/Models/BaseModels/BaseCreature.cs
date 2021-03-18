@@ -9,12 +9,12 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
     public class BaseCreature : ICreature
     {
         public Guid Id { get; set; } = Guid.NewGuid();
+        public string Name { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
+        public int Hitpoints { get; set; }
         public Range Damage { get; set; }
         public int SpellPower { get; set; }
-        public int Hitpoints { get; set; }
-        public string Name { get; set; }
         public bool IsCaster { get; set; }
         public Point Position { get; set; }
 
