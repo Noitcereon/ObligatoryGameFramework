@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace _2DTurnBasedGameFramework.Interfaces
 {
+    /// <summary>
+    /// An interface that represents a world object. Example world objects: mountain, item, shrine.
+    /// </summary>
     public interface IWorldObject
     {
         /// <summary>
@@ -25,10 +28,13 @@ namespace _2DTurnBasedGameFramework.Interfaces
         bool IsRemovable { get; set; }
 
         /// <summary>
-        /// The World Objects placement in the world.
+        /// The World Object's placement in the world.
         /// </summary>
         Point Position { get; set; }
 
+        /// <summary>
+        /// A name to be read by the player and/or programmer to help understand the functionality of the object.
+        /// </summary>
         string Name { get; set; }
     }
 }

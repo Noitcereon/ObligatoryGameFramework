@@ -17,9 +17,10 @@ namespace _2DTurnBasedGameFramework.Models
             IsRemovable = true;
         }
 
-        public void OnInteraction(ICreature creature)
+        public void OnInteraction(BaseCreature creature)
         {
-            
+            creature.InteractWithWorldObject();
+            throw new NotImplementedException();
         }
     }
 }
