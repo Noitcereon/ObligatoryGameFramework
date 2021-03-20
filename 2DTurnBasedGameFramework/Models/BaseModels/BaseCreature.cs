@@ -117,5 +117,10 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             IsDead = Hitpoints <= 0;
             return damageTaken;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}: {Hitpoints}";
+        }
     }
 }
