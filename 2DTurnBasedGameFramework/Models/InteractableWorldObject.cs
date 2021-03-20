@@ -19,7 +19,10 @@ namespace _2DTurnBasedGameFramework.Models
 
         public void OnInteraction(BaseCreature creature)
         {
+            // TODO: Figure out how creature handle items
+            // TODO: Figure out how creatures handle interactables that are NOT items.
             creature.InteractWithWorldObject();
+            //if (IsPickupable) { creature.LootItem}
             throw new NotImplementedException();
         }
     }

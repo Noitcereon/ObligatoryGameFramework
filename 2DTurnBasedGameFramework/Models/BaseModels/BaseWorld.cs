@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using _2DTurnBasedGameFramework.Interfaces;
-using _2DTurnBasedGameFramework.Models.BaseModels;
 
-namespace _2DTurnBasedGameFramework.Models
+namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
-    public class World : IWorld
+    public abstract class BaseWorld : IWorld
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -21,7 +16,7 @@ namespace _2DTurnBasedGameFramework.Models
         /// </summary>
         public List<BaseWorldObject> WorldObjects { get; private set; }
 
-        public World(int x, int y)
+        protected BaseWorld(int x, int y)
         {
             X = x;
             Y = y;
@@ -29,6 +24,7 @@ namespace _2DTurnBasedGameFramework.Models
 
         /// <summary>
         /// A very simple world generator. Can be overwritten.
+        /// You should always make a new WorldObject List at the beginning and add to it afterwards.
         /// </summary>
         public virtual void GenerateWorld()
         {
