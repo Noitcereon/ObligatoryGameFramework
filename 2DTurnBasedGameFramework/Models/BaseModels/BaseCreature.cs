@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using _2DTurnBasedGameFramework.Interfaces;
 using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
@@ -9,6 +10,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
     public abstract class BaseCreature : ICreature
     {
         public Guid Id { get; set; } = Guid.NewGuid();
+        public bool IsDead { get; set; }
         public string Name { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
@@ -112,6 +114,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             int damageTaken = damage - Defense;
 
             Hitpoints -= damageTaken;
+            IsDead = Hitpoints <= 0;
             return damageTaken;
         }
     }

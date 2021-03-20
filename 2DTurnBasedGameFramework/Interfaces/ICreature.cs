@@ -41,6 +41,11 @@ namespace _2DTurnBasedGameFramework.Interfaces
         int Hitpoints { get; set; }
 
         /// <summary>
+        /// Determines if the creature is dead. This happens when the creature's hitpoints is 0 or below.
+        /// </summary>
+        bool IsDead { get; set; }
+
+        /// <summary>
         /// The name of the creature type. (e.g. Medusa, Azure Dragon, Swashbuckler...)
         /// </summary>
         string Name { get; set; }
