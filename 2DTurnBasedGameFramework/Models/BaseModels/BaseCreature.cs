@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using _2DTurnBasedGameFramework.Interfaces;
 using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
@@ -18,6 +19,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public Range Damage { get; set; }
         public int SpellPower { get; set; }
         public bool IsCaster { get; set; }
+        public List<BaseItem> Items { get; set; } = new List<BaseItem>();
         public Point Position { get; set; } = Point.Empty;
 
         // TODO: abstract the stats into a Stats class?
@@ -90,12 +92,23 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Position = position;
         }
 
-        public void InteractWithWorldObject(IWorldObject worldObject)
+        public virtual void InteractWithWorldObject(IWorldObject worldObject)
         {
             if (worldObject.IsInteractable == false) return;
+            
             if (worldObject.Item != null)
             {
-                Items.Add();
+                Items.Add(worldObject.Item);
+
+                Attack += worldObject.Item.Attack;
+                Defense += worldObject.Item.Defense;
+                SpellPower += worldObject.Item.SpellPower;
+                Hitpoints += worldObject.Item.Hitpoints;
+            }
+            else
+            {
+                // The behaviour of a non-item interactable world object, when interacted with.
+                worldObject.Interact();
             }
         }
 

@@ -20,6 +20,11 @@ namespace _2DTurnBasedGameFramework.Interfaces
         Guid Id { get; set; }
 
         /// <summary>
+        /// A name to be read by the player and/or programmer to help understand the functionality of the object.
+        /// </summary>
+        string Name { get; set; }
+
+        /// <summary>
         /// Determines whether creatures can interact with this object or not.
         /// </summary>
         bool IsInteractable { get; set; }
@@ -29,6 +34,9 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// </summary>
         bool IsRemovable { get; set; }
 
+        /// <summary>
+        /// If this property is not null, this world object is an Item that can be picked up.
+        /// </summary>
         BaseItem Item { get; set; }
 
         /// <summary>
@@ -36,9 +44,8 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// </summary>
         Point Position { get; set; }
 
-        /// <summary>
-        /// A name to be read by the player and/or programmer to help understand the functionality of the object.
-        /// </summary>
-        string Name { get; set; }
+        
+
+        
     }
 }

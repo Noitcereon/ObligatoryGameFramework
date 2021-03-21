@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using _2DTurnBasedGameFramework.Models.BaseModels;
 using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
 namespace _2DTurnBasedGameFramework.Interfaces
@@ -16,6 +18,11 @@ namespace _2DTurnBasedGameFramework.Interfaces
         Guid Id { get; set; }
 
         /// <summary>
+        /// The name of the creature type. (e.g. Medusa, Azure Dragon, Swashbuckler...)
+        /// </summary>
+        string Name { get; set; }
+
+        /// <summary>
         /// The creature's default damage range. Range has a From int value and a To int value. Both are inclusive.
         /// </summary>
         Range Damage { get; set; }
@@ -26,9 +33,9 @@ namespace _2DTurnBasedGameFramework.Interfaces
         bool IsDead { get; set; }
 
         /// <summary>
-        /// The name of the creature type. (e.g. Medusa, Azure Dragon, Swashbuckler...)
+        /// The creature's possessions. Each Item held increases power according to the item's stats.
         /// </summary>
-        string Name { get; set; }
+        List<BaseItem> Items { get; set; }
 
         /// <summary>
         /// Determines whether or not the creature can cast magic.
