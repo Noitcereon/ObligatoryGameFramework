@@ -7,7 +7,7 @@ namespace _2DTurnBasedGameFramework.Interfaces
     /// <summary>
     /// Describes a creature's stats, name, position and attack/defense behaviour.
     /// </summary>
-    public interface ICreature
+    public interface ICreature : IStats
     {
         #region Properties
         /// <summary>
@@ -16,29 +16,9 @@ namespace _2DTurnBasedGameFramework.Interfaces
         Guid Id { get; set; }
 
         /// <summary>
-        /// The attack stat for the creature. Gives bonus to damage dealt when attacking.
-        /// </summary>
-        int Attack { get; set; }
-
-        /// <summary>
-        /// The defense stat for the creature. Reduces damage taken from attacks.
-        /// </summary>
-        int Defense { get; set; }
-
-        /// <summary>
-        /// The creature's default damage range. Range has a From int value and a To int value.
+        /// The creature's default damage range. Range has a From int value and a To int value. Both are inclusive.
         /// </summary>
         Range Damage { get; set; }
-
-        /// <summary>
-        /// The Spell Power stat for the creature. Increases the effectiveness of spells cast.
-        /// </summary>
-        int SpellPower { get; set; }
-
-        /// <summary>
-        /// The amount of hit points the creature has.
-        /// </summary>
-        int Hitpoints { get; set; }
 
         /// <summary>
         /// Determines if the creature is dead. This happens when the creature's hitpoints is 0 or below.
@@ -63,9 +43,9 @@ namespace _2DTurnBasedGameFramework.Interfaces
 
         #region Methods
         /// <summary>
-        /// Controls the behavious of the creature, when it encounters an Interactable World Object.
+        /// Controls the behavious of the creature, when it encounters a world object.
         /// </summary>
-        void InteractWithWorldObject();
+        void InteractWithWorldObject(IWorldObject worldObject);
 
         /// <summary>
         /// Controls the behaviour of the creature, when it is hitting another creature.

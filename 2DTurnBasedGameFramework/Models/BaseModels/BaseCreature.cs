@@ -20,8 +20,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public bool IsCaster { get; set; }
         public Point Position { get; set; } = Point.Empty;
 
-        // TODO: abstract the stats into a Stats class
-        // TODO: make SpellPower to be added with a Decorator if IsCaster = true
+        // TODO: abstract the stats into a Stats class?
 
         protected BaseCreature() { }
 
@@ -91,9 +90,13 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Position = position;
         }
 
-        public void InteractWithWorldObject()
+        public void InteractWithWorldObject(IWorldObject worldObject)
         {
-            throw new NotImplementedException();
+            if (worldObject.IsInteractable == false) return;
+            if (worldObject.Item != null)
+            {
+                Items.Add();
+            }
         }
 
         public virtual int Hit()

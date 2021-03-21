@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2DTurnBasedGameFramework.Models;
+using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace _2DTurnBasedGameFramework.Interfaces
 {
@@ -26,6 +28,8 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// Determines whether the object is removeable.
         /// </summary>
         bool IsRemovable { get; set; }
+
+        BaseItem Item { get; set; }
 
         /// <summary>
         /// The World Object's placement in the world.

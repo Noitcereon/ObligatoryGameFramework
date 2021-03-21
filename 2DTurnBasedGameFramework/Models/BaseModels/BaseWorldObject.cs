@@ -16,13 +16,12 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public Point Position { get; set; }
         public bool IsInteractable { get; set; }
         public bool IsRemovable { get; set; }
+        public BaseItem Item { get; set; } = null;
 
         protected BaseWorldObject(string name, Point position)
         {
             Name = name;
             Position = position;
-            IsInteractable = true;
-            IsRemovable = true;
         }
 
         protected BaseWorldObject(string name, Point position, bool isInteractable, bool isRemovable)
@@ -32,17 +31,21 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             IsRemovable = isRemovable;
             Position = position;
         }
-        
-        public virtual void OnInteraction()
+
+        /// <summary>
+        /// The constructor for an Item World Object
+        /// </summary>
+        /// <param name="position">Position in the world.</param>
+        /// <param name="item">The item that can be picked up, when interacting with this world object.</param>
+        protected BaseWorldObject(string name, Point position, BaseItem item)
         {
-            if (!IsInteractable) { return; }
-
-            Logger.Log(TraceEventType.Information, $"{Name} was interacted with. ID: {Id}");
-
-            if (IsRemovable)
-            {
-                Position = new Point(-1, -1);
-            }
+            Name = item.;
+            IsInteractable = true;
+            IsRemovable = true;
+            Item = item;
         }
+
+        public abstract void OnInteraction();
+
     }
 }

@@ -15,6 +15,7 @@ namespace _2DTurnBasedGameFramework.Models
         {
             IsInteractable = true;
             IsRemovable = true;
+            
         }
 
         public void OnInteraction(BaseCreature creature)
