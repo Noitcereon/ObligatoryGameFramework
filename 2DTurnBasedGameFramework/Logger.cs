@@ -10,6 +10,9 @@ using _2DTurnBasedGameFramework.Helpers;
 
 namespace _2DTurnBasedGameFramework
 {
+    /// <summary>
+    /// A simple Logger for this framework. Logs any Logger.Log() messages into a Log.txt file and a Log.json file.
+    /// </summary>
     public static class Logger
     {
         private static TraceSource _tracer;
@@ -23,13 +26,13 @@ namespace _2DTurnBasedGameFramework
             TraceSource theTraceSource = new TraceSource("2DTurnBasedGameFramework", LoadConfig.SourceLevel());
 
             // Text listener
-            string loggerFilePath = Directory.GetCurrentDirectory() + "/log.txt";
+            string loggerFilePath = Directory.GetCurrentDirectory() + "/Log.txt";
             using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath));
             TraceListener textListener = new TextWriterTraceListener(sw);
             theTraceSource.Listeners.Add(textListener);
 
             // Json listener
-            string jsonLoggerFilePath = Directory.GetCurrentDirectory() + "/log.json";
+            string jsonLoggerFilePath = Directory.GetCurrentDirectory() + "/Log.json";
             TraceListener jsonListener = new JsonTraceListener(jsonLoggerFilePath);
             theTraceSource.Listeners.Add(jsonListener);
 

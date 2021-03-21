@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using _2DTurnBasedGameFramework.Interfaces;
 
@@ -37,6 +38,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
                     PlaceObject(random.Next(1, 11), x, y);
                 }
             }
+            Logger.Log(TraceEventType.Information, "Generated world.");
         }
 
         /// <summary>
