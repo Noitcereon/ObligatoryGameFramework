@@ -52,7 +52,7 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// <summary>
         /// Controls the behavious of the creature, when it encounters a world object.
         /// </summary>
-        void InteractWithWorldObject(IWorldObject worldObject);
+        void InteractWithWorldObject(BaseWorldObject worldObject);
 
         /// <summary>
         /// Controls the behaviour of the creature, when it is hitting another creature.

@@ -12,12 +12,19 @@ namespace _2DTurnBasedGameFramework.Models
     {
         public Item()
         { }
+
+        public Item(string name):base(name) {}
+
+
+        public Item(string name, bool randomStats):base(name, randomStats) { }
+
         public Item(string name, int attack, int defense, int spellPower, int hitpoints)
             : base(name, attack, defense, spellPower, hitpoints)
         { }
 
-        public Item(string name):base(name) {}
-
-        public Item(string name, bool randomStats):base(name, randomStats) { }
+        public Item(string name, int attack)
+            : base(name, attack)
+        { }
+        
     }
 }
