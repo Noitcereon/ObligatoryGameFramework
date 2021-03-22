@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using _2DTurnBasedGameFramework.AbstractFactory.BaseFactories;
 using _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts;
 using _2DTurnBasedGameFramework.Models;
@@ -11,14 +12,23 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
     {
         public override BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange, bool isCaster)
         {
-            BaseCreature creature = new GenericCreature(name, atk, def, hp, dmgRange, isCaster);
-
-            if (creature.IsCaster)
+            try
             {
-                creature = new CasterCreature(creature);
-            }
+                BaseCreature creature = new GenericCreature(name, atk, def, hp, dmgRange, isCaster);
 
-            return creature;
+                if (creature.IsCaster)
+                {
+                    creature = new CasterCreature(creature);
+                }
+                return creature;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Logger.Log(TraceEventType.Critical, $"Creature creation error. Error message: {e.Message}");
+                Logger.Log(TraceEventType.Verbose, $"StackTrace: {e.StackTrace}");
+                throw;
+            }
         }
     }
 }

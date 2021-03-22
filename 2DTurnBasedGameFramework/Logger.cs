@@ -50,7 +50,7 @@ namespace _2DTurnBasedGameFramework
             {
                 _tracer = InitialiseTraceListener();
             }
-            _tracer.TraceEvent(traceEvent, 0, message);
+            _tracer.TraceEvent(traceEvent, 0, $"{DateTime.Now.Date:T}: {message}");
         }
     }
 }
