@@ -35,7 +35,7 @@ namespace _2DTurnBasedGameFramework.Interfaces
         bool IsRemovable { get; set; }
 
         /// <summary>
-        /// If this property is not null, this world object is an Item that can be picked up.
+        /// If this property is NOT null, this world object is an Item that can be picked up.
         /// </summary>
         BaseItem Item { get; set; }
 

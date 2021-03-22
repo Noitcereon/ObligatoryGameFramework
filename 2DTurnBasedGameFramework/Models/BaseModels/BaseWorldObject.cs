@@ -44,7 +44,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Item = item;
         }
 
-        public abstract void OnInteraction();
+        public abstract void OnInteraction(BaseCreature creature);
 
     }
 }

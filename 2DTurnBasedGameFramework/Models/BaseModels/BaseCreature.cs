@@ -92,7 +92,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Position = position;
         }
 
-        public virtual void InteractWithWorldObject(IWorldObject worldObject)
+        public virtual void InteractWithWorldObject(BaseWorldObject worldObject)
         {
             if (worldObject.IsInteractable == false) return;
             
@@ -108,7 +108,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             else
             {
                 // The behaviour of a non-item interactable world object, when interacted with.
-                worldObject.Interact();
+                worldObject.OnInteraction(this);
             }
         }
 
