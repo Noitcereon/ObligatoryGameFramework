@@ -15,14 +15,21 @@ namespace _2DTurnBasedGameFramework.Models
         {
             IsInteractable = true;
             IsRemovable = true;
-            
+        }
+        public InteractableWorldObject(BaseItem item, Point position) : base(item, position)
+        {
+            IsInteractable = true;
+            IsRemovable = true;
+        }
+
+        public virtual void Effect(BaseCreature creature)
+        {
+            creature.Hitpoints++;
         }
 
         public override void OnInteraction(BaseCreature creature)
         {
-            // TODO: Figure out how creature handle items
-            // TODO: Figure out how creatures handle interactables that are NOT items.
-            creature.InteractWithWorldObject(this);
+            Effect(creature);
         }
     }
 }

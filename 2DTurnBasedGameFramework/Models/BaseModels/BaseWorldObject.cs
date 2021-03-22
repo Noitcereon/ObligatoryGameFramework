@@ -16,7 +16,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public Point Position { get; set; }
         public bool IsInteractable { get; set; }
         public bool IsRemovable { get; set; }
-        public BaseItem Item { get; set; } = null;
+        public BaseItem Item { get; set; }
 
         protected BaseWorldObject(string name, Point position)
         {
@@ -37,7 +37,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// </summary>
         /// <param name="position">Position in the world.</param>
         /// <param name="item">The item that can be picked up, when interacting with this world object.</param>
-        protected BaseWorldObject(Point position, BaseItem item):this(item.Name, position)
+        protected BaseWorldObject(BaseItem item, Point position):this(item.Name, position)
         {
             IsInteractable = true;
             IsRemovable = true;
