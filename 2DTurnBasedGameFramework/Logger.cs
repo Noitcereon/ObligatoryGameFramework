@@ -27,9 +27,10 @@ namespace _2DTurnBasedGameFramework
 
             // Text listener
             string loggerFilePath = Directory.GetCurrentDirectory() + "/Log.txt";
-            using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath));
+            using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath)) {AutoFlush = true};
             TraceListener textListener = new TextWriterTraceListener(sw);
             theTraceSource.Listeners.Add(textListener);
+            // TODO: Make TextListener work... ?
 
             // Json listener
             string jsonLoggerFilePath = Directory.GetCurrentDirectory() + "/Log.json";
@@ -46,11 +47,20 @@ namespace _2DTurnBasedGameFramework
         /// <param name="message">The message you want to log</param>
         public static void Log(TraceEventType traceEvent, string message)
         {
-            if (_tracer == null)
+            try
             {
-                _tracer = InitialiseTraceListener();
+                if (_tracer == null)
+                {
+                    _tracer = InitialiseTraceListener();
+                }
+                _tracer.TraceEvent(traceEvent, 0, $"{DateTime.Now.Date:T}: {message}");
             }
-            _tracer.TraceEvent(traceEvent, 0, $"{DateTime.Now.Date:T}: {message}");
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
         }
     }
 }
