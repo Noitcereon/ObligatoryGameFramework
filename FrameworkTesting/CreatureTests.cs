@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FrameworkTesting
 {
     [TestClass]
-    public class UnitTest1
+    public class CreatureTests
     {
         [TestMethod]
         public void TestMethod1()
