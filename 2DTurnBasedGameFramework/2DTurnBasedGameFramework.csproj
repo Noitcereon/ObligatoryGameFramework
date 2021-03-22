@@ -5,8 +5,4 @@
     <RootNamespace>_2DTurnBasedGameFramework</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="AbstractFactory\" />
-  </ItemGroup>
-
 </Project>
