@@ -15,5 +15,10 @@ namespace _2DTurnBasedGameFramework.Models
             IsInteractable = false;
             IsRemovable = false;
         }
+
+        public override void OnInteraction(BaseCreature creature)
+        {
+            // Do nothing.
+        }
     }
 }
