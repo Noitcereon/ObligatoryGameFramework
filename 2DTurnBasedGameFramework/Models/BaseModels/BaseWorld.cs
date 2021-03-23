@@ -6,6 +6,9 @@ using _2DTurnBasedGameFramework.Interfaces;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
+    /// <summary>
+    /// Contains the properties and methods that define the world.
+    /// </summary>
     public abstract class BaseWorld : IWorld
     {
         public int X { get; set; }
@@ -42,13 +45,13 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         }
 
         /// <summary>
-        /// Used in the simple world generator to add objects to the world at pseudo-random locations.
+        /// Used in the default world generator to add objects to the world at pseudo-random locations.
         /// </summary>
         /// <param name="randomifier">A random number. If the number is divisible by 10 and the remainder is 0 you place a mountain
         /// else if you divide by 8 and the remainder is 0 you get an item.</param>
         /// <param name="x">x coordinate for the object</param>
         /// <param name="y">y coordinate for the object</param>
-        private void PlaceObject(int randomifier, int x, int y)
+        protected virtual void PlaceObject(int randomifier, int x, int y)
         {
             if (randomifier % 10 == 0)
             {

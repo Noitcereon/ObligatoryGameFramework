@@ -75,6 +75,14 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         {
             // No special effect.
         }
+        /// <summary>
+        /// Does nothing by default, but can be overriden to add a special effect to the item.
+        /// </summary>
+        /// <param name="creature">The creature to affect.</param>
+        protected virtual void SpecialEffect(BaseCreature creature)
+        {
+            // No special effect.
+        }
 
         /// <summary>
         /// Returns a string that shows the stats the item gives. Seperated by a Env.NewLine.

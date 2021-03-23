@@ -10,16 +10,27 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
     public abstract class BaseCreature : ICreature
     {
+        /// <inheritdoc />
         public Guid Id { get; set; } = Guid.NewGuid();
+        /// <inheritdoc />
         public bool IsDead { get; set; }
+        /// <inheritdoc />
         public string Name { get; set; }
+        /// <inheritdoc />
         public int Attack { get; set; }
+        /// <inheritdoc />
         public int Defense { get; set; }
+        /// <inheritdoc />
         public int Hitpoints { get; set; }
+        /// <inheritdoc />
         public Range Damage { get; set; }
+        /// <inheritdoc />
         public int SpellPower { get; set; }
+        /// <inheritdoc />
         public bool IsCaster { get; set; }
+        /// <inheritdoc />
         public List<BaseItem> Items { get; set; } = new List<BaseItem>();
+        /// <inheritdoc />
         public Point Position { get; set; } = Point.Empty;
 
         // TODO: abstract the stats into a Stats class?

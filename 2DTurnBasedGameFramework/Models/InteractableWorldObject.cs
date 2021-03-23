@@ -22,14 +22,11 @@ namespace _2DTurnBasedGameFramework.Models
             IsRemovable = true;
         }
 
-        public virtual void Effect(BaseCreature creature)
-        {
-            creature.Hitpoints++;
-        }
+
 
         public override void OnInteraction(BaseCreature creature)
         {
-            Effect(creature);
+            
         }
     }
 }
