@@ -9,16 +9,24 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
     public abstract class BaseItem : IItem
     {
+        /// <inheritdoc />
         public Guid Id { get; set; } = Guid.NewGuid();
+        /// <inheritdoc />
         public string Name { get; set; }
+        /// <inheritdoc />
         public int Attack { get; set; }
+        /// <inheritdoc />
         public int Defense { get; set; }
+        /// <inheritdoc />
         public int SpellPower { get; set; }
+        /// <inheritdoc />
         public int Hitpoints { get; set; }
 
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
         protected BaseItem()
         {
-            
         }
         /// <summary>
         /// Makes an item with nothing but a name.
@@ -60,6 +68,10 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Hitpoints = hitpoints;
         }
 
+        /// <summary>
+        /// Returns a string that shows the stats the item gives. Seperated by a Env.NewLine.
+        /// </summary>
+        /// <returns>A string that shows the stats the item gives</returns>
         public override string ToString()
         {
             return $"Atk: {Attack}{Environment.NewLine}" +

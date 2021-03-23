@@ -3,6 +3,7 @@
 namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
     /// <summary>
+    /// Creature created through the CreatureFactory (which inherits from ICreatureFactory)
     /// A caster creature can make use of its SpellPower stat to increase its damage.
     /// </summary>
     public class CasterCreature : BaseCreature
@@ -14,7 +15,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
         /// <summary>
         /// Creates a caster creature, based on a BaseCreature's stats.
         /// </summary>
-        /// <param name="creature">The creature that will become a caster</param>
+        /// <param name="creature">The creature that will become a caster.</param>
         public CasterCreature(BaseCreature creature)
         {
             Id = creature.Id;

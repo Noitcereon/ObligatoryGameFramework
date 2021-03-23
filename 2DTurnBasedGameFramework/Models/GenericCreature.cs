@@ -12,7 +12,7 @@ namespace _2DTurnBasedGameFramework.Models
 {
     public class GenericCreature : BaseCreature
     {
-        public GenericCreature()
+        public GenericCreature():base()
         {
         }
 

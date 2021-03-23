@@ -4,11 +4,10 @@ using Range = _2DTurnBasedGameFramework.Helpers.Range;
 namespace _2DTurnBasedGameFramework.AbstractFactory.BaseFactories
 {
     /// <summary>
-    /// The factory you make new creatures with.
+    /// A factory you make new creatures with.
     /// </summary>
     public interface ICreatureFactory
     {
-
         /// <summary>
         /// Creates a new creature.
         /// </summary>

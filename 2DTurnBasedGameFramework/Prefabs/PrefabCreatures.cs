@@ -11,7 +11,7 @@ namespace _2DTurnBasedGameFramework.Prefabs
     public class PrefabCreatures
     {
         // TODO: make Ready-For-Use creatures and items (in the Prefabs folder), for someone to set up a game fast.
-        private static readonly ICreatureFactory Factory = new StandardCreatureFactory();
+        private static readonly ICreatureFactory Factory = new CreatureFactory();
 
         // Creatures (from weak, to strong)
         // Tier 1
@@ -23,7 +23,7 @@ namespace _2DTurnBasedGameFramework.Prefabs
         /// <summary>
         /// Goblin: 4 atk, 2 def, 10 hp, 1-3 dmg
         /// </summary>
-        public static BaseCreature Goblin { get; set; } = Factory.CreateCreature("Goblin", 4, 2, 10, new Range(1, 3));
+        public static BaseCreature Goblin { get; set; } = Factory.CreateCreature("Goblin", 4, 2, 8, new Range(1, 3));
 
         /// <summary>
         /// Centaur: 4 atk, 3 def, 15 hp, 1-3 dmg

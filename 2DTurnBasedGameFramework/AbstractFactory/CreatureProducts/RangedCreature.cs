@@ -3,7 +3,8 @@
 namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
     /// <summary>
-    /// Not implemented yet. (for now just makes a normal creature without range).
+    /// Creature created through the CreatureFactory (which inherits from ICreatureFactory)
+    /// <remarks>Ranged is not yet implemented.</remarks>
     /// </summary>
     public class RangedCreature : BaseCreature
     {

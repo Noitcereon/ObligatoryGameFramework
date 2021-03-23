@@ -11,7 +11,7 @@ namespace FrameworkTesting
     [TestClass]
     public class CreatureTests
     {
-        private readonly StandardCreatureFactory _factory = new StandardCreatureFactory();
+        private readonly CreatureFactory _factory = new CreatureFactory();
 
         [TestMethod]
         public void CanLootItem()

@@ -3,7 +3,7 @@
 namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
     /// <summary>
-    /// The standard creature. Does not have anything special about it.
+    /// Creature created through the CreatureFactory (which inherits from ICreatureFactory)
     /// </summary>
     public class MeleeCreature : BaseCreature
     {
