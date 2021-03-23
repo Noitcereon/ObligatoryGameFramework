@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2DTurnBasedGameFramework;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 using _2DTurnBasedGameFramework.Prefabs;
 
@@ -21,7 +22,7 @@ namespace DebugProject
             var goblin = PrefabCreatures.Goblin;
             var peasant = PrefabCreatures.Peasant;
 
-
+            Logger.Close();
         }
     }
 }

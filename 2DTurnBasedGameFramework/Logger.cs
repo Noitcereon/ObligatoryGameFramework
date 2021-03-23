@@ -24,6 +24,7 @@ namespace _2DTurnBasedGameFramework
         private static TraceSource InitialiseTraceListener()
         {
             TraceSource theTraceSource = new TraceSource("2DTurnBasedGameFramework", LoadConfig.SourceLevel());
+            theTraceSource.Switch = new SourceSwitch("2DTurnBasedGameFramework", LoadConfig.SourceLevel().ToString());
 
             // Text listener
             string loggerFilePath = Directory.GetCurrentDirectory() + "/Log.txt";
@@ -62,7 +63,14 @@ namespace _2DTurnBasedGameFramework
                 Console.WriteLine(e);
                 throw;
             }
-           
+        }
+
+        /// <summary>
+        /// Disposes of the Tracer.
+        /// </summary>
+        public static void Close()
+        {
+            _tracer.Close();
         }
     }
 }

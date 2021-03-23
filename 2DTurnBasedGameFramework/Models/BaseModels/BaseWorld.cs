@@ -75,7 +75,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
             else if (randomifier % 8 == 0)
             {
-                WorldObjects.Add(new InteractableWorldObject("Item", new Point(x, y)));
+                WorldObjects.Add(new InteractableWorldObject(new Item("Angel Statue"), new Point(x, y)));
             }
             else if (randomifier % 6 == 0)
             {

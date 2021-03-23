@@ -22,11 +22,25 @@ namespace _2DTurnBasedGameFramework.Models
         /// </summary>
         /// <param name="item">The item that can be picked up, when interacting with this world object.</param>
         /// <param name="position">Position in the world.</param>
-        protected InteractableWorldObject(BaseItem item, Point position) : base(item.Name, position)
+        public InteractableWorldObject(BaseItem item, Point position) : base(item.Name, position)
         {
             IsInteractable = true;
             IsRemovable = true;
             Item = item;
+        }
+
+        /// <summary>
+        /// The constructor for an interactable object that is not an item.
+        /// </summary>
+        /// <param name="name">The name of the object</param>
+        /// <param name="position">The position of the object in the world.</param>
+        /// <param name="action">The code that gets triggered on interaction with the object.</param>
+        public InteractableWorldObject(string name, Point position, Action<BaseCreature> action)
+        {
+            Name = name;
+            IsInteractable = true;
+            Position = position;
+            _actionOnInteraction = action;
         }
 
         /// <summary>

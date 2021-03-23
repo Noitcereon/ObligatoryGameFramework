@@ -16,18 +16,21 @@ namespace _2DTurnBasedGameFramework.Helpers
     {
         private readonly string _filePath = Directory.GetCurrentDirectory() + "/Log.json";
         private readonly object _lock = new object();
+        private readonly StreamWriter _sw;
 
         public JsonTraceListener()
         {
-
+            _sw = new StreamWriter(File.Create(_filePath)) {AutoFlush = true};
         }
 
         /// <param name="filePath">The location of the log file</param>
         public JsonTraceListener(string filePath)
         {
             _filePath = filePath;
+            _sw = new StreamWriter(File.Create(_filePath)) {AutoFlush = true};
         }
 
+        /// <inheritdoc />
         public override void Write(string message)
         {
             if (message == null) return;
@@ -35,11 +38,11 @@ namespace _2DTurnBasedGameFramework.Helpers
             string json = JsonSerializer.Serialize(message);
             lock (_lock)
             {
-                using StreamWriter sw = new StreamWriter(File.Create(_filePath));
-                sw.Write(json);
+                _sw.Write(json);
             }
         }
 
+        /// <inheritdoc />
         public override void WriteLine(string message)
         {
             if (message == null) return;
@@ -47,8 +50,7 @@ namespace _2DTurnBasedGameFramework.Helpers
             string json = JsonSerializer.Serialize(message);
             lock (_lock)
             {
-                using StreamWriter sw = new StreamWriter(File.Create(_filePath));
-                sw.WriteLine(json);
+                _sw.WriteLine(json);
             }
         }
     }
