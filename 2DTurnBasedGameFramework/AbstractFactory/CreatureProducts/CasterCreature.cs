@@ -2,9 +2,19 @@
 
 namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
+    /// <summary>
+    /// A caster creature can make use of its SpellPower stat to increase its damage.
+    /// </summary>
     public class CasterCreature : BaseCreature
     {
+        /// <summary>
+        /// Empty constructor. Only here for json purposes.
+        /// </summary>
         public CasterCreature() { }
+        /// <summary>
+        /// Creates a caster creature, based on a BaseCreature's stats.
+        /// </summary>
+        /// <param name="creature">The creature that will become a caster</param>
         public CasterCreature(BaseCreature creature)
         {
             Id = creature.Id;
@@ -18,6 +28,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
             Position = creature.Position;
         }
 
+        
         public override int Hit()
         {
             return base.Hit() + SpellPower;
