@@ -9,6 +9,9 @@ using _2DTurnBasedGameFramework.Interfaces;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
+    /// <summary>
+    /// Contains the properties, constructors and methods for a world object.
+    /// </summary>
     public abstract class BaseWorldObject : IWorldObject
     {
         /// <inheritdoc />
@@ -30,21 +33,18 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public BaseItem Item { get; set; }
 
         /// <summary>
-        /// Creates a world object with a name and a position. It is neither interactable nor removable.
+        /// Empty constructor.
+        /// </summary>
+        protected BaseWorldObject() { }
+
+        /// <summary>
+        /// Creates a world object with a name and a position.
         /// </summary>
         /// <param name="name">Name of the object.</param>
         /// <param name="position">The World Objects placement in the world.</param>
         protected BaseWorldObject(string name, Point position)
         {
             Name = name;
-            Position = position;
-        }
-
-        protected BaseWorldObject(string name, Point position, bool isInteractable, bool isRemovable)
-        {
-            Name = name;
-            IsInteractable = isInteractable;
-            IsRemovable = isRemovable;
             Position = position;
         }
 
@@ -63,7 +63,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <summary>
         /// Defines what happens, when a creature interacts with this WorldObject.
         /// </summary>
-        /// <param name="creature"></param>
+        /// <param name="creature">The creature that interacts with the WorldObject.</param>
         public abstract void OnInteraction(BaseCreature creature);
 
     }

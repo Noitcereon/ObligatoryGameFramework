@@ -19,7 +19,7 @@ namespace _2DTurnBasedGameFramework.Models
         /// <summary>
         /// Does nothing.
         /// </summary>
-        public override void OnInteraction(BaseCreature creature)
+        public override void OnInteraction(BaseCreature creature, Action<BaseCreature> action)
         {
             // Do nothing.
         }

@@ -26,6 +26,10 @@ namespace DebugProject
                         var worldObject = WorldObjects.Find(obj => obj.Position == p);
                         Console.Write(worldObject.IsInteractable ? "O " : "# ");
                     }
+                    else if (Creatures.Exists(obj => obj.Position == p))
+                    {
+                        Console.Write("Y ");
+                    }
                     else
                     {
                         Console.Write("x ");
