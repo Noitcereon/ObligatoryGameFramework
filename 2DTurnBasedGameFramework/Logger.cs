@@ -24,14 +24,13 @@ namespace _2DTurnBasedGameFramework
         private static TraceSource InitialiseTraceListener()
         {
             TraceSource theTraceSource = new TraceSource("2DTurnBasedGameFramework", LoadConfig.SourceLevel());
-            theTraceSource.Switch = new SourceSwitch(LoadConfig.SourceLevel().ToString());
 
             // Text listener
             string loggerFilePath = Directory.GetCurrentDirectory() + "/Log.txt";
             using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath)) {AutoFlush = true};
             TraceListener textListener = new TextWriterTraceListener(sw);
             theTraceSource.Listeners.Add(textListener);
-            // TODO: Make textListener work... ? It generates the file, but not sure if it writes to it.
+            // BUG: Make textListener work... ? It generates the file, but not sure if it writes to it.
 
             // Json listener
             string jsonLoggerFilePath = Directory.GetCurrentDirectory() + "/Log.json";
@@ -54,7 +53,7 @@ namespace _2DTurnBasedGameFramework
                 {
                     _tracer = InitialiseTraceListener();
                 }
-                _tracer.TraceEvent(traceType, 0, $"{DateTime.Now.Date:T}: {message}");
+                _tracer.TraceEvent(traceType, 0, $"{DateTime.Now.TimeOfDay:g}: {message}");
             }
             catch (Exception e)
             {

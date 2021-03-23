@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DTurnBasedGameFramework", "2DTurnBasedGameFramework\2DTurnBasedGameFramework.csproj", "{812AB8A6-4144-48F4-8E5E-FA109F55C109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2DTurnBasedGameFramework", "2DTurnBasedGameFramework\2DTurnBasedGameFramework.csproj", "{812AB8A6-4144-48F4-8E5E-FA109F55C109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkTesting", "FrameworkTesting\FrameworkTesting.csproj", "{4ACA6F86-5294-4C04-B100-7F40B86724F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrameworkTesting", "FrameworkTesting\FrameworkTesting.csproj", "{4ACA6F86-5294-4C04-B100-7F40B86724F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
