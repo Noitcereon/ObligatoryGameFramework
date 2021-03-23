@@ -28,7 +28,7 @@ namespace _2DTurnBasedGameFramework
 
             // Text listener
             string loggerFilePath = Directory.GetCurrentDirectory() + "/Log.txt";
-            using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath)) {AutoFlush = true};
+            using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath)) { AutoFlush = true };
             TraceListener textListener = new TextWriterTraceListener(sw);
             theTraceSource.Listeners.Add(textListener);
             // BUG: Make textListener work... It generates the file, but does not seem to write to it.
@@ -56,7 +56,7 @@ namespace _2DTurnBasedGameFramework
                 }
 
                 TimeSpan time = DateTime.Now.TimeOfDay;
-                _tracer.TraceEvent(traceType, 0, $"{time.Hours}:{time.Minutes}:{time.Seconds} : {message}");
+                _tracer.TraceEvent(traceType, 0, $"{time} : {message}");
             }
             catch (Exception e)
             {
@@ -66,7 +66,7 @@ namespace _2DTurnBasedGameFramework
         }
 
         /// <summary>
-        /// Disposes of the Tracer.
+        /// Disposes of the TraceSource.
         /// </summary>
         public static void Close()
         {

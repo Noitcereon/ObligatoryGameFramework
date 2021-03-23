@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
-
   <!-- DebugLevel determines which logging messages should be logged -->
   <!-- Debug Levels: All, Informational, Warning, Error, Critical, Off -->
   <DebugLevel>All</DebugLevel>
