@@ -69,6 +69,14 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         }
 
         /// <summary>
+        /// Does nothing by default, but can be overriden to add a special effect to the item.
+        /// </summary>
+        protected virtual void SpecialEffect()
+        {
+            // No special effect.
+        }
+
+        /// <summary>
         /// Returns a string that shows the stats the item gives. Seperated by a Env.NewLine.
         /// </summary>
         /// <returns>A string that shows the stats the item gives</returns>

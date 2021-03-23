@@ -10,6 +10,9 @@ using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
 namespace _2DTurnBasedGameFramework.Models
 {
+    /// <summary>
+    /// A generic creature. Used in the creation of new creatures in the CreatureFactory.
+    /// </summary>
     public class GenericCreature : BaseCreature
     {
         public GenericCreature():base()

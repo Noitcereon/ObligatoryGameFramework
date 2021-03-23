@@ -8,13 +8,15 @@ using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace _2DTurnBasedGameFramework.Models
 {
+    /// <summary>
+    /// The default Item object to create Items with.
+    /// </summary>
     public class Item : BaseItem
     {
         public Item()
         { }
 
         public Item(string name):base(name) {}
-
 
         public Item(string name, bool randomStats):base(name, randomStats) { }
 
