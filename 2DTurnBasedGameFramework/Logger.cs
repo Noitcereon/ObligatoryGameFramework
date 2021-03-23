@@ -24,13 +24,14 @@ namespace _2DTurnBasedGameFramework
         private static TraceSource InitialiseTraceListener()
         {
             TraceSource theTraceSource = new TraceSource("2DTurnBasedGameFramework", LoadConfig.SourceLevel());
+            theTraceSource.Switch = new SourceSwitch(LoadConfig.SourceLevel().ToString());
 
             // Text listener
             string loggerFilePath = Directory.GetCurrentDirectory() + "/Log.txt";
             using StreamWriter sw = new StreamWriter(File.Create(loggerFilePath)) {AutoFlush = true};
             TraceListener textListener = new TextWriterTraceListener(sw);
             theTraceSource.Listeners.Add(textListener);
-            // TODO: Make TextListener work... ?
+            // TODO: Make textListener work... ? It generates the file, but not sure if it writes to it.
 
             // Json listener
             string jsonLoggerFilePath = Directory.GetCurrentDirectory() + "/Log.json";
@@ -43,9 +44,9 @@ namespace _2DTurnBasedGameFramework
         /// <summary>
         /// Logs a message to the Listeners of the TraceSource.
         /// </summary>
-        /// <param name="traceEvent">The log level of the incoming message (Informational, Warning, Error, Critical, Verbose)</param>
+        /// <param name="traceType">The log level of the incoming message (Informational, Warning, Error, Critical, Verbose)</param>
         /// <param name="message">The message you want to log</param>
-        public static void Log(TraceEventType traceEvent, string message)
+        public static void Log(TraceEventType traceType, string message)
         {
             try
             {
@@ -53,7 +54,7 @@ namespace _2DTurnBasedGameFramework
                 {
                     _tracer = InitialiseTraceListener();
                 }
-                _tracer.TraceEvent(traceEvent, 0, $"{DateTime.Now.Date:T}: {message}");
+                _tracer.TraceEvent(traceType, 0, $"{DateTime.Now.Date:T}: {message}");
             }
             catch (Exception e)
             {

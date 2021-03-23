@@ -8,10 +8,11 @@ using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
 namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
 {
-    public class StandardCreatureFactory : CreatureFactory
+    public class StandardCreatureFactory : ICreatureFactory
     {
+
         /// <summary>
-        /// 
+        /// Creates a new creature.
         /// </summary>
         /// <param name="name">Name of the creature. (e.g. Medusa, Dragon, Wolf Rider etc.)</param>
         /// <param name="atk">Attack bonus. Increases damage dealt.</param>
@@ -20,7 +21,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
         /// <param name="dmgRange">The base damage range for the creature.</param>
         /// <param name="isCaster">Determines if the creature is a caster or not. If it is, it gains additional damage from SpellPower</param>
         /// <returns>A creature that inherits from BaseCreature</returns>
-        public override BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange, bool isCaster)
+        public BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange, bool isCaster)
         {
             try
             {
@@ -30,6 +31,23 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
                 {
                     creature = new CasterCreature(creature);
                 }
+                return creature;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Logger.Log(TraceEventType.Critical, $"Creature creation error. Error message: {e.Message}");
+                Logger.Log(TraceEventType.Verbose, $"StackTrace: {e.StackTrace}");
+                throw;
+            }
+        }
+
+        public BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange)
+        {
+            try
+            {
+                BaseCreature creature = new GenericCreature(name, atk, def, hp, dmgRange);
+
                 return creature;
             }
             catch (Exception e)
