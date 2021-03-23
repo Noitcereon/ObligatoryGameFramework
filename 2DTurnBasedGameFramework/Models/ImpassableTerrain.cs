@@ -8,8 +8,14 @@ using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace _2DTurnBasedGameFramework.Models
 {
+    /// <summary>
+    /// Impassable terrrain object. Non-interactable, non-removable.
+    /// </summary>
     public class ImpassableTerrain : BaseWorldObject
     {
+        /// <summary>
+        /// Constructor for ImpassableTerrain.
+        /// </summary>
         public ImpassableTerrain(string name, Point position) : base(name, position)
         {
             IsInteractable = false;
@@ -19,9 +25,9 @@ namespace _2DTurnBasedGameFramework.Models
         /// <summary>
         /// Does nothing.
         /// </summary>
-        public override void OnInteraction(BaseCreature creature, Action<BaseCreature> action)
+        public override void OnInteraction(BaseCreature creature)
         {
-            // Do nothing.
+             // Do nothing.
         }
     }
 }

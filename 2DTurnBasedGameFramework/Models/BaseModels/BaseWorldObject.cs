@@ -49,18 +49,6 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         }
 
         /// <summary>
-        /// The constructor for an Item World Object
-        /// </summary>
-        /// <param name="item">The item that can be picked up, when interacting with this world object.</param>
-        /// <param name="position">Position in the world.</param>
-        protected BaseWorldObject(BaseItem item, Point position):this(item.Name, position)
-        {
-            IsInteractable = true;
-            IsRemovable = true;
-            Item = item;
-        }
-
-        /// <summary>
         /// Defines what happens, when a creature interacts with this WorldObject.
         /// </summary>
         /// <param name="creature">The creature that interacts with the WorldObject.</param>
