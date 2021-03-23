@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2DTurnBasedGameFramework", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrameworkTesting", "FrameworkTesting\FrameworkTesting.csproj", "{4ACA6F86-5294-4C04-B100-7F40B86724F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugProject", "DebugProject\DebugProject.csproj", "{8463B3F5-D85C-40CC-B1C0-AEEB964E78AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4ACA6F86-5294-4C04-B100-7F40B86724F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ACA6F86-5294-4C04-B100-7F40B86724F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ACA6F86-5294-4C04-B100-7F40B86724F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8463B3F5-D85C-40CC-B1C0-AEEB964E78AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8463B3F5-D85C-40CC-B1C0-AEEB964E78AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8463B3F5-D85C-40CC-B1C0-AEEB964E78AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8463B3F5-D85C-40CC-B1C0-AEEB964E78AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

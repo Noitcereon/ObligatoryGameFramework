@@ -6,11 +6,18 @@ using System.Xml;
 
 namespace _2DTurnBasedGameFramework.Configuration
 {
+    /// <summary>
+    /// Contains method(s) to retrieve information from Configuration.xml file
+    /// </summary>
     public class LoadConfig
     {
         private static readonly string ConfigFilePath = Directory.GetCurrentDirectory() + @"\Configuration.xml";
         private static readonly XmlDocument Doc = new XmlDocument();
 
+        /// <summary>
+        /// Retrieves the source level from Configuration.xml
+        /// </summary>
+        /// <returns>The SourceLevel from the config or SourceLevels.Error if not found.</returns>
         public static SourceLevels SourceLevel()
         {
             try
@@ -27,7 +34,7 @@ namespace _2DTurnBasedGameFramework.Configuration
                 Doc.Load(ConfigFilePath);
                 XmlNode debugNode = Doc.DocumentElement?.SelectSingleNode("DebugLevel");
                 bool success = Enum.TryParse(debugNode?.InnerText, out SourceLevels level);
-
+                
                 return success ? level : SourceLevels.Error;
             }
             catch (Exception e)
