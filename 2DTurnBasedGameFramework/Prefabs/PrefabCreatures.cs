@@ -31,7 +31,10 @@ namespace _2DTurnBasedGameFramework.Prefabs
         public BaseCreature Centaur { get; set; } = Factory.CreateCreature("Centaur", 4, 3, 15, new Range(1, 3));
 
         // Tier 2
-        // wolf rider
+        /// <summary>
+        /// Wolf Rider: 5 atk, 4 def, 15 hp, 3-5 dmg
+        /// </summary>
+        public BaseCreature WolfRider { get; set; } = Factory.CreateCreature("Wolf Rider", 5, 4, 15, new Range(3, 5));
         // gargoyle
         // harpie
 
@@ -43,7 +46,10 @@ namespace _2DTurnBasedGameFramework.Prefabs
         // Tier 4
         // pegasus rider
         // medusa
-        // mage
+        /// <summary>
+        /// Mage: 5 atk, 4 def, 20 hp, 5-8 dmg, isCaster = true
+        /// </summary>
+        public BaseCreature Mage { get; set; } = Factory.CreateCreature("Mage", 5, 4, 20, new Range(5, 8), true);
 
         // Tier 5
         // dendroid

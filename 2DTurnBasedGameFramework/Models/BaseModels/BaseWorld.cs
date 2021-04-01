@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using _2DTurnBasedGameFramework.AbstractFactory.Factories;
 using _2DTurnBasedGameFramework.Interfaces;
 using _2DTurnBasedGameFramework.Prefabs;
 
@@ -79,10 +80,29 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
             else if (randomifier % 6 == 0)
             {
-                var creature = new PrefabCreatures().Centaur;
+                Random random = new Random();
+                BaseCreature creature;
+                switch (random.Next(0, 3))
+                {
+                    case 0:
+                        creature = _premadeCreatures.Centaur;
+                        break;
+                    case 1:
+                        creature = _premadeCreatures.Goblin;
+                        break;
+                    case 2:
+                        creature = _premadeCreatures.Mage;
+                        break;
+                    default:
+                        creature = _premadeCreatures.Peasant;
+                        break;
+                }
+                 
                 creature.Position = new Point(x, y);
                 Creatures.Add(creature);
             }
         }
+
+        private readonly PrefabCreatures _premadeCreatures = new PrefabCreatures();
     }
 }
