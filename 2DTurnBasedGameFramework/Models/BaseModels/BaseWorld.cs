@@ -41,7 +41,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 
         /// <summary>
         /// A very simple world generator. Can be overwritten.
-        /// You should always make a new WorldObject List at the beginning and add to it afterwards.
+        /// You ought to always reset WorldObjects and Creatures List at the beginning.
         /// </summary>
         public virtual void GenerateWorld()
         {

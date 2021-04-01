@@ -18,6 +18,9 @@ namespace _2DTurnBasedGameFramework.Helpers
         private readonly object _lock = new object();
         private readonly StreamWriter _sw;
 
+        /// <summary>
+        /// Creates a default JsonTraceListener with a path of current directory + Log.json.
+        /// </summary>
         public JsonTraceListener()
         {
             _sw = new StreamWriter(File.Create(_filePath)) {AutoFlush = true};

@@ -29,7 +29,12 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
             Position = creature.Position;
         }
 
-        
+
+        /// <summary>
+        /// Controls the behaviour of the creature when it is hitting something.
+        /// 
+        /// </summary>
+        /// <returns>Damage dealt (Base dmg + Atk + SP)</returns>
         public override int Hit()
         {
             return base.Hit() + SpellPower;

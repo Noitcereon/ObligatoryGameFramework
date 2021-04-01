@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using _2DTurnBasedGameFramework.Interfaces;
 using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
+    /// <summary>
+    /// <para>The Base class for all creatures.</para> Contains properties for stats, items and position,
+    /// in addition to methods: Hit(), ReceiveHit() and InteractWithWorldObject().
+    /// and an overriden ToString().
+    /// </summary>
     public abstract class BaseCreature : ICreature
     {
         /// <inheritdoc />
@@ -63,7 +70,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <param name="hitpoints">Total HP for the creature.</param>
         /// <param name="damage">The damage range for the creature. (can go over the limit with the Attack bonus)</param>
         /// <param name="position">The initial position of the creature in a <c>World</c></param>
-        protected BaseCreature(string name, int attack, int defense, int hitpoints, Range damage, Point position):this
+        protected BaseCreature(string name, int attack, int defense, int hitpoints, Range damage, Point position) : this
             (name, attack, defense, hitpoints, damage)
         {
             Position = position;
@@ -103,10 +110,11 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Position = position;
         }
 
+        /// <inheritdoc />
         public virtual void InteractWithWorldObject(BaseWorldObject worldObject)
         {
             if (worldObject.IsInteractable == false) return;
-            
+
             if (worldObject.Item != null)
             {
                 Items.Add(worldObject.Item);
@@ -123,10 +131,11 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
         }
 
+        /// <inheritdoc />
         public virtual int Hit()
         {
             Random random = new Random();
-            
+
             int baseDamage = random.Next(Damage.From, Damage.To);
 
             // abstract dmg calculation into derived class?
@@ -135,6 +144,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             return damageDealt;
         }
 
+
+        /// <inheritdoc />
         public virtual int ReceiveHit(int damage)
         {
             // Maybe abstract the damage calculation away into a method overriden in a derived class?
@@ -145,9 +156,23 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             return damageTaken;
         }
 
+        /// <summary>
+        /// Prints creature's information (all stats and items). Basically a character sheet.
+        /// </summary>
+        /// <returns>A formatted character sheet</returns>
         public override string ToString()
         {
-            return $"{Name}: {Hitpoints}";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(Name);
+            sb.AppendLine($"Atk: {Attack}");
+            sb.AppendLine($"Def: {Defense}");
+            sb.AppendLine($"HP: {Hitpoints}");
+            sb.AppendLine($"SP: {SpellPower}");
+            sb.AppendLine($"Base dmg: {Damage.From}-{Damage.To}");
+            sb.AppendLine($"Spellcaster: {(IsCaster ? "Yes" : "No")}");
+            string items = Items.Aggregate("", (current, item) => current + ($"{item.Name}\n" + item));
+            sb.AppendLine(items);
+            return sb.ToString();
         }
     }
 }
