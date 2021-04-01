@@ -35,13 +35,19 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public int SpellPower { get; set; }
         /// <inheritdoc />
         public bool IsCaster { get; set; }
-        /// <inheritdoc />
-        public List<BaseItem> Items { get; set; } = new List<BaseItem>();
+
+        /// <summary>
+        /// The creature's possessions. Each Item held increases power according to the item's stats.
+        /// </summary>
+        protected List<BaseItem> Items { get; set; } = new List<BaseItem>();
         /// <inheritdoc />
         public Point Position { get; set; } = Point.Empty;
 
         // TODO: abstract the stats into a Stats class?
 
+        /// <summary>
+        /// Empty contructor.
+        /// </summary>
         protected BaseCreature() { }
 
         /// <summary>
@@ -117,18 +123,24 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 
             if (worldObject.Item != null)
             {
-                Items.Add(worldObject.Item);
-
-                Attack += worldObject.Item.Attack;
-                Defense += worldObject.Item.Defense;
-                SpellPower += worldObject.Item.SpellPower;
-                Hitpoints += worldObject.Item.Hitpoints;
+                Loot(worldObject.Item);
             }
             else
             {
                 // The behaviour of a non-item interactable world object, when interacted with.
                 worldObject.OnInteraction(this);
             }
+        }
+
+
+        /// <inheritdoc />
+        public void Loot(BaseItem item)
+        {
+            Items.Add(item);
+            Attack += item.Attack;
+            Defense += item.Defense;
+            Hitpoints += item.Hitpoints;
+            SpellPower += item.SpellPower;
         }
 
         /// <inheritdoc />
@@ -170,6 +182,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             sb.AppendLine($"SP: {SpellPower}");
             sb.AppendLine($"Base dmg: {Damage.From}-{Damage.To}");
             sb.AppendLine($"Spellcaster: {(IsCaster ? "Yes" : "No")}");
+            sb.AppendLine($"{(Items.Count <= 0 ? "Items: (none)" : "Items: ") }");
             string items = Items.Aggregate("", (current, item) => current + ($"{item.Name}\n" + item));
             sb.AppendLine(items);
             return sb.ToString();

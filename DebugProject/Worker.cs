@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _2DTurnBasedGameFramework;
+using _2DTurnBasedGameFramework.Models;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 using _2DTurnBasedGameFramework.Prefabs;
 
@@ -22,6 +23,10 @@ namespace DebugProject
             var centaur = creatures.Centaur;
             var goblin = creatures.Goblin;
             var peasant = creatures.Peasant;
+
+            goblin.Loot(new Item("Club", 2));
+            Console.WriteLine(goblin);
+            Console.WriteLine(centaur);
 
             CombatLoop(centaur, goblin);
 
@@ -45,7 +50,7 @@ namespace DebugProject
                 }
                 else if (!creature1.IsDead && creature2.IsDead)
                 {
-                    creature1.Items.AddRange(creature2.Items);
+                    Loot(creature2, creature1);
                     Console.WriteLine(creature1);
                 }
 
@@ -55,11 +60,29 @@ namespace DebugProject
                 }
                 else if (!creature2.IsDead && creature1.IsDead)
                 {
-                    creature2.Items.AddRange(creature1.Items);
+                    Loot(creature1, creature2);
+                    
                     Console.WriteLine(creature2);
                 }
             }
+        }
 
+        private void Loot(BaseCreature corpse, BaseCreature looter)
+        {
+            Console.WriteLine($"{looter.Name} loots {corpse.Name}'s corpse.");
+            if (corpse.Items.Count == 0)
+            {
+                Console.WriteLine($"{looter.Name} found nothing.");
+            }
+            else
+            {
+                Console.WriteLine($"{looter.Name} picked up: ");
+                foreach (var item in corpse.Items)
+                {
+                    looter.Loot(item);
+                    Console.WriteLine($"- {item.Name}");
+                }
+            }
         }
     }
 }

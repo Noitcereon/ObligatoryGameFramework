@@ -33,11 +33,6 @@ namespace _2DTurnBasedGameFramework.Interfaces
         bool IsDead { get; set; }
 
         /// <summary>
-        /// The creature's possessions. Each Item held increases power according to the item's stats.
-        /// </summary>
-        List<BaseItem> Items { get; set; }
-
-        /// <summary>
         /// Determines whether or not the creature can cast magic.
         /// </summary>
         bool IsCaster { get; set; }
@@ -49,6 +44,11 @@ namespace _2DTurnBasedGameFramework.Interfaces
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Adds an item to the Items property and adds the stats of the item to the creature.
+        /// </summary>
+        void Loot(BaseItem item);
         /// <summary>
         /// Controls the behavious of the creature, when it encounters a world object.
         /// </summary>
