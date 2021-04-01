@@ -163,6 +163,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             // Maybe abstract the damage calculation away into a method overriden in a derived class?
             int damageTaken = damage - Defense;
 
+            // Always take at least 1 damage.
+            if (damageTaken <= 0) damageTaken = 1;
             Hitpoints -= damageTaken;
             IsDead = Hitpoints <= 0;
             return damageTaken;
