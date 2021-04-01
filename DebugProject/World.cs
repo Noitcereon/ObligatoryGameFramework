@@ -28,7 +28,7 @@ namespace DebugProject
                     }
                     else if (Creatures.Exists(obj => obj.Position == p))
                     {
-                        Console.Write("Y ");
+                        Console.Write("@ ");
                     }
                     else
                     {

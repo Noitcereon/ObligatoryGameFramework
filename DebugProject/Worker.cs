@@ -18,9 +18,10 @@ namespace DebugProject
             world.GenerateWorld();
             world.WriteWorldToConsole();
 
-            var centaur = PrefabCreatures.Centaur;
-            var goblin = PrefabCreatures.Goblin;
-            var peasant = PrefabCreatures.Peasant;
+            PrefabCreatures creatures = new PrefabCreatures();
+            var centaur = creatures.Centaur;
+            var goblin = creatures.Goblin;
+            var peasant = creatures.Peasant;
 
             Logger.Close();
         }

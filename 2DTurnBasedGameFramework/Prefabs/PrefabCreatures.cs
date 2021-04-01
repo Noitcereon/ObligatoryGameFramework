@@ -18,17 +18,17 @@ namespace _2DTurnBasedGameFramework.Prefabs
         /// <summary>
         /// Peasant: 3 atk, 0 def, 5 hp, 1-1 dmg;
         /// </summary>
-        public static BaseCreature Peasant { get; set; } = Factory.CreateCreature("Peasant", 3, 0, 5, new Range(1, 1));
+        public BaseCreature Peasant { get; set; } = Factory.CreateCreature("Peasant", 3, 0, 5, new Range(1, 1));
 
         /// <summary>
         /// Goblin: 4 atk, 2 def, 10 hp, 1-3 dmg
         /// </summary>
-        public static BaseCreature Goblin { get; set; } = Factory.CreateCreature("Goblin", 4, 2, 8, new Range(1, 3));
+        public BaseCreature Goblin { get; set; } = Factory.CreateCreature("Goblin", 4, 2, 8, new Range(1, 3));
 
         /// <summary>
         /// Centaur: 4 atk, 3 def, 15 hp, 1-3 dmg
         /// </summary>
-        public static BaseCreature Centaur { get; set; } = Factory.CreateCreature("Centaur", 4, 3, 15, new Range(1, 3));
+        public BaseCreature Centaur { get; set; } = Factory.CreateCreature("Centaur", 4, 3, 15, new Range(1, 3));
 
         // Tier 2
         // wolf rider

@@ -79,7 +79,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
             else if (randomifier % 6 == 0)
             {
-                var creature = PrefabCreatures.Centaur;
+                var creature = new PrefabCreatures().Centaur;
                 creature.Position = new Point(x, y);
                 Creatures.Add(creature);
             }
