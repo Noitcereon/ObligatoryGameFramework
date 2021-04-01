@@ -132,7 +132,6 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
         }
 
-
         /// <inheritdoc />
         public void Loot(BaseItem item)
         {
