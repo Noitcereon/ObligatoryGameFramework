@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2DTurnBasedGameFramework.Interfaces.ObserverPattern;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace DebugProject
@@ -32,11 +33,17 @@ namespace DebugProject
                     }
                     else
                     {
-                        Console.Write("x ");
+                        Console.Write("  ");
                     }
                 }
                 Console.Write(Environment.NewLine);
             }
+        }
+
+        public override void Update(ISubject subject)
+        {
+            base.Update(subject);
+            WriteWorldToConsole();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace DebugProject
     {
         public void Start()
         {
-            World world = new World(50, 20);
+            World world = new World(20, 20);
 
             world.GenerateWorld();
             world.WriteWorldToConsole();

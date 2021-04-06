@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using _2DTurnBasedGameFramework.Interfaces;
+using _2DTurnBasedGameFramework.Interfaces.ObserverPattern;
 using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
@@ -15,12 +15,23 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
     /// in addition to the methods: Hit(), ReceiveHit() and InteractWithWorldObject() +
     /// an overriden ToString().
     /// </summary>
-    public abstract class BaseCreature : ICreature
+    public abstract class BaseCreature : ICreature, ISubject
     {
+        private bool _isDead;
+        private List<IObserver> _observers;
+
         /// <inheritdoc />
         public Guid Id { get; set; } = Guid.NewGuid();
         /// <inheritdoc />
-        public bool IsDead { get; set; }
+        public bool IsDead
+        {
+            get => _isDead;
+            set
+            {
+                _isDead = value;
+                Notify();
+            }
+        }
         /// <inheritdoc />
         public string Name { get; set; }
         /// <inheritdoc />
@@ -46,6 +57,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 
         // TODO: abstract the stats into a Stats class?
 
+        #region Constructors
         /// <summary>
         /// Empty contructor.
         /// </summary>
@@ -66,6 +78,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Defense = defense;
             Hitpoints = hitpoints;
             Damage = damage;
+            _observers = new List<IObserver>();
         }
 
         /// <summary>
@@ -116,7 +129,9 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             if (IsCaster) SpellPower = 10;
             Position = position;
         }
+        #endregion
 
+        #region Methods
         /// <inheritdoc />
         public void InteractWithWorldObject(BaseWorldObject worldObject)
         {
@@ -141,6 +156,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             Defense += item.Defense;
             Hitpoints += item.Hitpoints;
             SpellPower += item.SpellPower;
+            Logger.Log(TraceEventType.Information, "Item looted.");
         }
 
         /// <summary>
@@ -151,11 +167,12 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 
         /// <summary>
         /// Any additional behaviour added to Hit() method. Such as healing on attack, enraging or similar.
+        /// <para><remarks>Leave this method empty, if you do not want to add any behaviour.</remarks></para>
         /// </summary>
         public abstract void AdditionalHitModification();
 
         /// <inheritdoc />
-        public int Hit()
+        public virtual int Hit()
         {
             Random random = new Random();
 
@@ -168,17 +185,17 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             return damageDealt;
         }
 
-
         /// <inheritdoc />
         public virtual int ReceiveHit(int damage)
         {
-            // Maybe abstract the damage calculation away into a method overriden in a derived class?
+            // TODO: abstract the damage taken calculation away into a method overriden in a derived class.
             int damageTaken = damage - Defense;
 
             // Always take at least 1 damage.
             if (damageTaken <= 0) damageTaken = 1;
             Hitpoints -= damageTaken;
             IsDead = Hitpoints <= 0;
+            // TODO: Implement Observable on IsDead property.
             return damageTaken;
         }
 
@@ -201,5 +218,19 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             sb.AppendLine(items);
             return sb.ToString();
         }
+
+        /// <inheritdoc />
+        public void Attach(IObserver observer)
+        {
+            if(_observers == null) _observers = new List<IObserver>();
+            _observers.Add(observer);
+        }
+
+        /// <inheritdoc />
+        public void Notify()
+        {
+            _observers?.ForEach(o => o.Update(this));
+        }
+        #endregion
     }
 }

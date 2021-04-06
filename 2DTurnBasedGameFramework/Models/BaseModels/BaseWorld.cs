@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using _2DTurnBasedGameFramework.AbstractFactory.Factories;
 using _2DTurnBasedGameFramework.Interfaces;
+using _2DTurnBasedGameFramework.Interfaces.ObserverPattern;
 using _2DTurnBasedGameFramework.Prefabs;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
@@ -11,9 +12,13 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
     /// <summary>
     /// Contains the properties and methods that define the world.
     /// </summary>
-    public abstract class BaseWorld : IWorld
+    public abstract class BaseWorld : IWorld, IObserver
     {
+        private readonly PrefabCreatures _premadeCreatures = new PrefabCreatures();
+
+        /// <inheritdoc />
         public int X { get; set; }
+        /// <inheritdoc />
         public int Y { get; set; }
 
         /// <summary>
@@ -61,8 +66,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <summary>
         /// Used in the default world generator to add objects to the world at pseudo-random locations.
         /// </summary>
-        /// <param name="randomifier">A random number. If the number is divisible by 10 and the remainder is 0 you place a mountain
-        /// else if you divide by 8 and the remainder is 0 you get an item.</param>
+        /// <param name="randomifier">A pseudo random number. If the number is divisible by 10 and the remainder is 0 you place a mountain
+        /// else if you divide by 8 and the remainder is 0 you get an item, else if you divide by 2 and the remainder is 0 you place a creature.</param>
         /// <param name="x">x coordinate for the object</param>
         /// <param name="y">y coordinate for the object</param>
         protected virtual void PlaceObject(int randomifier, int x, int y)
@@ -78,7 +83,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             {
                 WorldObjects.Add(new InteractableWorldObject(new Item("Angel Statue"), new Point(x, y)));
             }
-            else if (randomifier % 6 == 0)
+            else if (randomifier % 2 == 0)
             {
                 Random random = new Random();
                 BaseCreature creature;
@@ -99,10 +104,23 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
                 }
                  
                 creature.Position = new Point(x, y);
+                creature.Attach(this);
                 Creatures.Add(creature);
             }
         }
 
-        private readonly PrefabCreatures _premadeCreatures = new PrefabCreatures();
+        
+
+        /// <inheritdoc />
+        public virtual void Update(ISubject subject)
+        {
+            if (subject is BaseCreature creature)
+            {
+                if (creature.IsDead)
+                {
+                    Creatures.Remove(creature);
+                }
+            }
+        }
     }
 }
