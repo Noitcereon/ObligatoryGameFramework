@@ -12,8 +12,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
     /// <summary>
     /// <para>The Base class for all creatures.</para> Contains properties for stats, items and position,
-    /// in addition to methods: Hit(), ReceiveHit() and InteractWithWorldObject().
-    /// and an overriden ToString().
+    /// in addition to the methods: Hit(), ReceiveHit() and InteractWithWorldObject() +
+    /// an overriden ToString().
     /// </summary>
     public abstract class BaseCreature : ICreature
     {
@@ -38,8 +38,9 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
 
         /// <summary>
         /// The creature's possessions. Each Item held increases power according to the item's stats.
+        /// <remarks><para>Items should only be added to via the Loot method.</para></remarks>
         /// </summary>
-        protected List<BaseItem> Items { get; set; } = new List<BaseItem>();
+        public List<BaseItem> Items { get; set; } = new List<BaseItem>();
         /// <inheritdoc />
         public Point Position { get; set; } = Point.Empty;
 
@@ -117,7 +118,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         }
 
         /// <inheritdoc />
-        public virtual void InteractWithWorldObject(BaseWorldObject worldObject)
+        public void InteractWithWorldObject(BaseWorldObject worldObject)
         {
             if (worldObject.IsInteractable == false) return;
 
@@ -127,7 +128,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
             else
             {
-                // The behaviour of a non-item interactable world object, when interacted with.
+                // The behaviour of a non-item world object, when interacted with.
                 worldObject.OnInteraction(this);
             }
         }
@@ -142,6 +143,12 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             SpellPower += item.SpellPower;
         }
 
+        /// <summary>
+        /// This method calculates any additional damage, adding it on top of the base damage in the Hit() method.
+        /// </summary>
+        /// <returns>Damage dealt in addition to base damage</returns>
+        public abstract int DamageModifier();
+
         /// <inheritdoc />
         public virtual int Hit()
         {
@@ -150,7 +157,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             int baseDamage = random.Next(Damage.From, Damage.To);
 
             // abstract dmg calculation into derived class?
-            int damageDealt = baseDamage + Attack;
+            int damageDealt = baseDamage + DamageModifier();
 
             return damageDealt;
         }
@@ -172,7 +179,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <summary>
         /// Prints creature's information (all stats and items). Basically a character sheet.
         /// </summary>
-        /// <returns>A formatted character sheet</returns>
+        /// <returns>A formatted string representing the creature.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -24,5 +24,12 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
             Position = creature.Position;
             // TODO: Implement Ranged Attack
         }
+
+
+        /// <inheritdoc />
+        public override int DamageModifier()
+        {
+            return Attack;
+        }
     }
 }

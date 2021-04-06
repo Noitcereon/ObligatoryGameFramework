@@ -34,5 +34,11 @@ namespace _2DTurnBasedGameFramework.Models
         public GenericCreature(string name, int attack, int defense, int hitpoints, Range damage, Point position, bool isCaster) : base(name, attack, defense, hitpoints, damage, position, isCaster)
         {
         }
+
+        /// <inheritdoc />
+        public override int DamageModifier()
+        {
+            return Attack;
+        }
     }
 }

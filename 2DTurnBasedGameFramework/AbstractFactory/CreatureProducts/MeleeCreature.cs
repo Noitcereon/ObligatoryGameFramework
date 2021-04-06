@@ -27,5 +27,11 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
             Hitpoints = creature.Hitpoints;
             Position = creature.Position;
         }
+
+        /// <inheritdoc />
+        public override int DamageModifier()
+        {
+            return Attack;
+        }
     }
 }

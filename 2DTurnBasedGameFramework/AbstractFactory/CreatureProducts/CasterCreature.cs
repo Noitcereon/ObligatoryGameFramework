@@ -1,4 +1,5 @@
-﻿using _2DTurnBasedGameFramework.Models.BaseModels;
+﻿using System;
+using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
@@ -29,15 +30,11 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
             Position = creature.Position;
         }
 
-
-        /// <summary>
-        /// Controls the behaviour of the creature when it is hitting something.
-        /// 
-        /// </summary>
-        /// <returns>Damage dealt (Base dmg + Atk + SP)</returns>
-        public override int Hit()
+        /// <inheritdoc />
+        public override int DamageModifier()
         {
-            return base.Hit() + SpellPower;
+            // BUG: Does this give an error if Attack/2 is a decimal?
+            return Attack/2 + SpellPower;
         }
     }
 }
