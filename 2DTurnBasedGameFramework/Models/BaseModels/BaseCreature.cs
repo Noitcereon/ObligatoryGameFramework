@@ -195,7 +195,6 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             if (damageTaken <= 0) damageTaken = 1;
             Hitpoints -= damageTaken;
             IsDead = Hitpoints <= 0;
-            // TODO: Implement Observable on IsDead property.
             return damageTaken;
         }
 
@@ -223,6 +222,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public void Attach(IObserver observer)
         {
             if(_observers == null) _observers = new List<IObserver>();
+            if (_observers.Contains(observer)) return;
             _observers.Add(observer);
         }
 

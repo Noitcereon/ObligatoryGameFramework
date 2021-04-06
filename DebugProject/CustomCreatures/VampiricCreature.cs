@@ -16,7 +16,7 @@ namespace DebugProject.CustomCreatures
 
         public override void AdditionalHitModification()
         {
-            throw new NotImplementedException();
+            Hitpoints += Attack / 2;
         }
     }
 }
