@@ -33,8 +33,13 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
         /// <inheritdoc />
         public override int DamageModifier()
         {
-            // BUG: Does this give an error if Attack/2 is a decimal?
             return Attack/2 + SpellPower;
+        }
+
+        /// <inheritdoc />
+        public override void AdditionalHitModification()
+        {
+            // No special behaviour.
         }
     }
 }

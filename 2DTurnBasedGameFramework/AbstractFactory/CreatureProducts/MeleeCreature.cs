@@ -33,5 +33,11 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
         {
             return Attack;
         }
+
+        /// <inheritdoc />
+        public override void AdditionalHitModification()
+        {
+            // No special effect on hit.
+        }
     }
 }

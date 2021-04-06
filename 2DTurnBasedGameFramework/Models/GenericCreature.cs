@@ -40,5 +40,11 @@ namespace _2DTurnBasedGameFramework.Models
         {
             return Attack;
         }
+
+        /// <inheritdoc />
+        public override void AdditionalHitModification()
+        {
+            // No special behaviour.
+        }
     }
 }

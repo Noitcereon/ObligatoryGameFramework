@@ -7,6 +7,7 @@ using _2DTurnBasedGameFramework;
 using _2DTurnBasedGameFramework.Models;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 using _2DTurnBasedGameFramework.Prefabs;
+using DebugProject.CustomCreatures;
 
 namespace DebugProject
 {
@@ -21,14 +22,15 @@ namespace DebugProject
 
             PrefabCreatures creatures = new PrefabCreatures();
             var centaur = creatures.Centaur;
-            var goblin = creatures.Goblin;
+            var mage = creatures.Mage;
             var peasant = creatures.Peasant;
 
-            goblin.Loot(new Item("Club", 2));
-            Console.WriteLine(goblin);
+            mage.Loot(new Item("Staff", 2));
+
+            Console.WriteLine(mage);
             Console.WriteLine(centaur);
 
-            CombatLoop(centaur, goblin);
+            CombatLoop(centaur, mage);
 
             Logger.Close();
         }

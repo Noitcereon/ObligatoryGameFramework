@@ -149,15 +149,21 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <returns>Damage dealt in addition to base damage</returns>
         public abstract int DamageModifier();
 
+        /// <summary>
+        /// Any additional behaviour added to Hit() method. Such as healing on attack, enraging or similar.
+        /// </summary>
+        public abstract void AdditionalHitModification();
+
         /// <inheritdoc />
-        public virtual int Hit()
+        public int Hit()
         {
             Random random = new Random();
 
             int baseDamage = random.Next(Damage.From, Damage.To);
 
-            // abstract dmg calculation into derived class?
             int damageDealt = baseDamage + DamageModifier();
+
+            AdditionalHitModification();
 
             return damageDealt;
         }
