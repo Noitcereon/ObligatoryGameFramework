@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using _2DTurnBasedGameFramework.Models.BaseModels;
-using Range = _2DTurnBasedGameFramework.Helpers.Range;
+using CustomRange = _2DTurnBasedGameFramework.Helpers.CustomRange;
 
 namespace _2DTurnBasedGameFramework.Interfaces
 {
@@ -25,7 +25,7 @@ namespace _2DTurnBasedGameFramework.Interfaces
         /// <summary>
         /// The creature's default damage range. Range has a From int value and a To int value. Both are inclusive.
         /// </summary>
-        Range Damage { get; set; }
+        CustomRange Damage { get; set; }
 
         /// <summary>
         /// Determines if the creature is dead. This happens when the creature's hitpoints is 0 or below.

@@ -1,5 +1,5 @@
 ﻿using _2DTurnBasedGameFramework.Models.BaseModels;
-using Range = _2DTurnBasedGameFramework.Helpers.Range;
+using CustomRange = _2DTurnBasedGameFramework.Helpers.CustomRange;
 
 namespace _2DTurnBasedGameFramework.AbstractFactory.BaseFactories
 {
@@ -18,7 +18,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.BaseFactories
         /// <param name="dmgRange">The base damage range for the creature.</param>
         /// <param name="isCaster">Determines if the creature is a caster or not. If it is, it gains additional damage from SpellPower</param>
         /// <returns>A creature that inherits from BaseCreature</returns>
-        BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange, bool isCaster);
+        BaseCreature CreateCreature(string name, int atk, int def, int hp, CustomRange dmgRange, bool isCaster);
 
         /// <summary>
         /// Creates a new non-caster creature.
@@ -29,6 +29,6 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.BaseFactories
         /// <param name="hp">Hitpoints. Determines how much damage to take before dying.</param>
         /// <param name="dmgRange">The base damage range for the creature.</param>
         /// <returns>A creature that inherits from BaseCreature</returns>
-        BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange);
+        BaseCreature CreateCreature(string name, int atk, int def, int hp, CustomRange dmgRange);
     }
 }

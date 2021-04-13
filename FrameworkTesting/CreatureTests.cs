@@ -17,7 +17,7 @@ namespace FrameworkTesting
         public void CanLootItem()
         {
             BaseWorldObject pickUp = new InteractableWorldObject(new Item("Ring", true), Point.Empty);
-            BaseCreature creature = _factory.CreateCreature("Wolf Rider", 5, 3, 24, new Range(3, 6), false);
+            BaseCreature creature = _factory.CreateCreature("Wolf Rider", 5, 3, 24, new CustomRange(3, 6), false);
 
             int beforePickup = creature.Items.Count;
             creature.InteractWithWorldObject(pickUp);
@@ -31,7 +31,7 @@ namespace FrameworkTesting
             BaseWorldObject pickUp = new InteractableWorldObject(new Item("Ring", 5, 3, -2, 10), Point.Empty);
             BaseWorldObject pickUp2 = new InteractableWorldObject(new Item("Sword of the Novice", 2), Point.Empty);
             BaseWorldObject pickUp3 = new InteractableWorldObject(new Item("Angel Statue"), Point.Empty);
-            BaseCreature creature = _factory.CreateCreature("Wolf Rider", 5, 3, 24, new Range(3, 6), false);
+            BaseCreature creature = _factory.CreateCreature("Wolf Rider", 5, 3, 24, new CustomRange(3, 6), false);
             var creatureBeforeItemStats = creature;
 
             int expectedAtk = creatureBeforeItemStats.Attack + 7;

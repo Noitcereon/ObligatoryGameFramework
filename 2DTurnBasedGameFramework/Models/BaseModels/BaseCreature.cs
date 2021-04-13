@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using _2DTurnBasedGameFramework.Interfaces;
 using _2DTurnBasedGameFramework.Interfaces.ObserverPattern;
-using Range = _2DTurnBasedGameFramework.Helpers.Range;
+using CustomRange = _2DTurnBasedGameFramework.Helpers.CustomRange;
 
 namespace _2DTurnBasedGameFramework.Models.BaseModels
 {
@@ -41,7 +41,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <inheritdoc />
         public int Hitpoints { get; set; }
         /// <inheritdoc />
-        public Range Damage { get; set; }
+        public CustomRange Damage { get; set; }
         /// <inheritdoc />
         public int SpellPower { get; set; }
         /// <inheritdoc />
@@ -71,7 +71,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <param name="defense">The defense bonus of the creature.</param>
         /// <param name="hitpoints">Total HP for the creature.</param>
         /// <param name="damage">The damage range for the creature. (can go over the limit with the Attack bonus)</param>
-        protected BaseCreature(string name, int attack, int defense, int hitpoints, Range damage)
+        protected BaseCreature(string name, int attack, int defense, int hitpoints, CustomRange damage)
         {
             Name = name;
             Attack = attack;
@@ -90,7 +90,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <param name="hitpoints">Total HP for the creature.</param>
         /// <param name="damage">The damage range for the creature. (can go over the limit with the Attack bonus)</param>
         /// <param name="position">The initial position of the creature in a <c>World</c></param>
-        protected BaseCreature(string name, int attack, int defense, int hitpoints, Range damage, Point position) : this
+        protected BaseCreature(string name, int attack, int defense, int hitpoints, CustomRange damage, Point position) : this
             (name, attack, defense, hitpoints, damage)
         {
             Position = position;
@@ -105,7 +105,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <param name="hitpoints">Total HP for the creature.</param>
         /// <param name="damage">The damage range for the creature. (can go over the limit with the Attack bonus)</param>
         /// <param name="isCaster">Determines wheter or not the creature is a caster.</param>
-        protected BaseCreature(string name, int attack, int defense, int hitpoints, Range damage, bool isCaster) : this
+        protected BaseCreature(string name, int attack, int defense, int hitpoints, CustomRange damage, bool isCaster) : this
             (name, attack, defense, hitpoints, damage)
         {
             IsCaster = isCaster;
@@ -122,7 +122,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <param name="damage">The damage range for the creature. (can go over the limit with the Attack bonus)</param>
         /// <param name="position">The initial position of the creature in a <c>World</c></param>
         /// <param name="isCaster">Determines wheter or not the creature is a caster.</param>
-        protected BaseCreature(string name, int attack, int defense, int hitpoints, Range damage, Point position, bool isCaster) : this
+        protected BaseCreature(string name, int attack, int defense, int hitpoints, CustomRange damage, Point position, bool isCaster) : this
             (name, attack, defense, hitpoints, damage)
         {
             IsCaster = isCaster;
@@ -188,7 +188,6 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <inheritdoc />
         public virtual int ReceiveHit(int damage)
         {
-            // TODO: abstract the damage taken calculation away into a method overriden in a derived class.
             int damageTaken = damage - Defense;
 
             // Always take at least 1 damage.
@@ -222,7 +221,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         public void Attach(IObserver observer)
         {
             if(_observers == null) _observers = new List<IObserver>();
-            if (_observers.Contains(observer)) return;
+            if (_observers.Contains(observer)) return; // prevent the same observer from observing multiple times.
             _observers.Add(observer);
         }
 

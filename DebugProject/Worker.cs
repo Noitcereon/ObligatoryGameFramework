@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _2DTurnBasedGameFramework;
+using _2DTurnBasedGameFramework.AbstractFactory.BaseFactories;
+using _2DTurnBasedGameFramework.AbstractFactory.Factories;
+using _2DTurnBasedGameFramework.Helpers;
 using _2DTurnBasedGameFramework.Models;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 using _2DTurnBasedGameFramework.Prefabs;
@@ -24,6 +27,9 @@ namespace DebugProject
             var centaur = creatures.Centaur;
             var mage = creatures.Mage;
             var peasant = creatures.Peasant;
+
+            ICreatureFactory creatureFactory = new CreatureFactory();
+            creatureFactory.CreateCreature("", 10, 10, 50, new Range(5, 10));
 
             mage.Loot(new Item("Staff", 2));
 

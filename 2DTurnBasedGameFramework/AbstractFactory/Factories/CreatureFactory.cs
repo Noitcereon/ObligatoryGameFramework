@@ -4,7 +4,7 @@ using _2DTurnBasedGameFramework.AbstractFactory.BaseFactories;
 using _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts;
 using _2DTurnBasedGameFramework.Models;
 using _2DTurnBasedGameFramework.Models.BaseModels;
-using Range = _2DTurnBasedGameFramework.Helpers.Range;
+using CustomRange = _2DTurnBasedGameFramework.Helpers.CustomRange;
 
 namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
 {
@@ -14,7 +14,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
     public class CreatureFactory : ICreatureFactory
     {
         /// <inheritdoc />
-        public BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange, bool isCaster)
+        public BaseCreature CreateCreature(string name, int atk, int def, int hp, CustomRange dmgRange, bool isCaster)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.Factories
 
 
         /// <inheritdoc />
-        public BaseCreature CreateCreature(string name, int atk, int def, int hp, Range dmgRange)
+        public BaseCreature CreateCreature(string name, int atk, int def, int hp, CustomRange dmgRange)
         {
             try
             {

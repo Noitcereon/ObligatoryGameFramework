@@ -10,7 +10,7 @@ namespace _2DTurnBasedGameFramework.Helpers
     /// Contains properties for From and To. Both are inclusive.
     /// Example use: a damage range, where it deals dmg between 3-6 (3 would be From, 6 would be To)
     /// </summary>
-    public struct Range
+    public struct CustomRange
     {
         /// <summary>
         /// Start of the range.
@@ -24,7 +24,7 @@ namespace _2DTurnBasedGameFramework.Helpers
         /// <summary>
         /// Sets the From and To properties.
         /// </summary>
-        public Range(int from, int to)
+        public CustomRange(int from, int to)
         {
             From = from;
             To = to;

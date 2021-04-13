@@ -18,23 +18,23 @@ namespace _2DTurnBasedGameFramework.Prefabs
         /// <summary>
         /// Peasant: 3 atk, 0 def, 5 hp, 1-1 dmg;
         /// </summary>
-        public BaseCreature Peasant { get; set; } = Factory.CreateCreature("Peasant", 3, 0, 5, new Range(1, 1));
+        public BaseCreature Peasant { get; set; } = Factory.CreateCreature("Peasant", 3, 0, 5, new CustomRange(1, 1));
 
         /// <summary>
         /// Goblin: 4 atk, 2 def, 10 hp, 1-3 dmg
         /// </summary>
-        public BaseCreature Goblin { get; set; } = Factory.CreateCreature("Goblin", 4, 2, 8, new Range(1, 3));
+        public BaseCreature Goblin { get; set; } = Factory.CreateCreature("Goblin", 4, 2, 8, new CustomRange(1, 3));
 
         /// <summary>
         /// Centaur: 4 atk, 3 def, 15 hp, 1-3 dmg
         /// </summary>
-        public BaseCreature Centaur { get; set; } = Factory.CreateCreature("Centaur", 4, 3, 15, new Range(1, 3));
+        public BaseCreature Centaur { get; set; } = Factory.CreateCreature("Centaur", 4, 3, 15, new CustomRange(1, 3));
 
         // Tier 2
         /// <summary>
         /// Wolf Rider: 5 atk, 4 def, 15 hp, 3-5 dmg
         /// </summary>
-        public BaseCreature WolfRider { get; set; } = Factory.CreateCreature("Wolf Rider", 5, 4, 15, new Range(3, 5));
+        public BaseCreature WolfRider { get; set; } = Factory.CreateCreature("Wolf Rider", 5, 4, 15, new CustomRange(3, 5));
         // gargoyle
         // harpie
 
@@ -49,7 +49,7 @@ namespace _2DTurnBasedGameFramework.Prefabs
         /// <summary>
         /// Mage: 5 atk, 4 def, 20 hp, 5-8 dmg, isCaster = true
         /// </summary>
-        public BaseCreature Mage { get; set; } = Factory.CreateCreature("Mage", 5, 4, 20, new Range(5, 8), true);
+        public BaseCreature Mage { get; set; } = Factory.CreateCreature("Mage", 5, 4, 20, new CustomRange(5, 8), true);
 
         // Tier 5
         // dendroid
