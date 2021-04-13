@@ -11,7 +11,7 @@ namespace DebugProject.CustomCreatures
     {
         public override int DamageModifier()
         {
-            throw new NotImplementedException();
+            return Attack;
         }
 
         public override void AdditionalHitModification()

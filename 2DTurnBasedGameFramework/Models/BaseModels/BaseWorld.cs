@@ -109,8 +109,6 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             }
         }
 
-        
-
         /// <inheritdoc />
         public virtual void Update(ISubject subject)
         {

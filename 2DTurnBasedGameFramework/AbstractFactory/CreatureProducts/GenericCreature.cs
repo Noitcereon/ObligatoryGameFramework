@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 using Range = _2DTurnBasedGameFramework.Helpers.Range;
 
-namespace _2DTurnBasedGameFramework.Models
+namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
     /// <summary>
     /// A generic creature. Used in the creation of new creatures in the CreatureFactory.
