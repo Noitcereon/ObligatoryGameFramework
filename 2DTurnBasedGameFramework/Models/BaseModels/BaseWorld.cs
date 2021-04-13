@@ -119,6 +119,10 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
                     Creatures.Remove(creature);
                 }
             }
+            if (subject is InteractableWorldObject worldObject)
+            {
+                WorldObjects.Remove(worldObject);
+            }
         }
     }
 }

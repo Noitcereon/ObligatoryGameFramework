@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _2DTurnBasedGameFramework.Interfaces;
+using _2DTurnBasedGameFramework.Interfaces.ObserverPattern;
 using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace _2DTurnBasedGameFramework.Models
@@ -13,9 +14,10 @@ namespace _2DTurnBasedGameFramework.Models
     /// <summary>
     /// Represents an interactable world object.
     /// </summary>
-    public class InteractableWorldObject : BaseWorldObject
+    public class InteractableWorldObject : BaseWorldObject, ISubject
     {
         private readonly Action<BaseCreature> _actionOnInteraction;
+        private List<IObserver> _observers; 
 
         /// <summary>
         /// The constructor for an Item World Object
@@ -67,7 +69,7 @@ namespace _2DTurnBasedGameFramework.Models
                 _actionOnInteraction.Invoke(creature);
                 if (IsRemovable)
                 {
-                    Position = new Point(-1, -1); // TODO: Remove from world in another way.
+                    Notify(); // Notifies the World it is placed in that it should be removed.
                 }
             }
             catch (Exception e)
@@ -76,6 +78,20 @@ namespace _2DTurnBasedGameFramework.Models
                 Logger.Log(TraceEventType.Error, "Interaction with world object threw an exception.");
                 Logger.Log(TraceEventType.Verbose, $"StackTrace: {e.StackTrace}");
             }
+        }
+
+        /// <inheritdoc />
+        public void Attach(IObserver observer)
+        {
+            if (_observers == null) _observers = new List<IObserver>();
+            if (_observers.Contains(observer)) return; // prevent the same observer from observing multiple times.
+            _observers.Add(observer);
+        }
+
+        /// <inheritdoc />
+        public void Notify()
+        {
+            _observers?.ForEach(o => o.Update(this));
         }
     }
 }

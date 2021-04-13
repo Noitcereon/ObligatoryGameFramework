@@ -33,6 +33,7 @@ namespace DebugProject
 
             var vampire = creatureFactory.CreateCreature<VampiricCreature>("Vampire", 10, 5, 30, new CustomRange(3, 7));
 
+            vampire.Attach(world);
             mage.Loot(new Item("Staff", 2));
 
             Console.WriteLine(mage);
