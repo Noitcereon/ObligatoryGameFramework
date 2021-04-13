@@ -5,7 +5,7 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
     /// <summary>
     /// Creature created through the CreatureFactory (which inherits from ICreatureFactory)
     /// </summary>
-    public class MeleeCreature : BaseCreature
+    public class MeleeCreature : GenericCreature
     {
         /// <summary>
         /// Empty constructor. Only here for json convertion.

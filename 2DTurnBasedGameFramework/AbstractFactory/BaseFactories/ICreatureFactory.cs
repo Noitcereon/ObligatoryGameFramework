@@ -30,5 +30,17 @@ namespace _2DTurnBasedGameFramework.AbstractFactory.BaseFactories
         /// <param name="dmgRange">The base damage range for the creature.</param>
         /// <returns>A creature that inherits from BaseCreature</returns>
         BaseCreature CreateCreature(string name, int atk, int def, int hp, CustomRange dmgRange);
+
+        /// <summary>
+        /// Creates a new T creature. (T could be a custom creature implementation that, in some way, inherits from BaseCreature)
+        /// </summary>
+        /// <param name="name">Name of the creature. (e.g. Medusa, Dragon, Wolf Rider etc.)</param>
+        /// <param name="atk">Attack bonus. Increases damage dealt.</param>
+        /// <param name="def">Defense bonus. Decreases damage taken.</param>
+        /// <param name="hp">Hitpoints. Determines how much damage to take before dying.</param>
+        /// <param name="dmgRange">The base damage range for the creature.</param>
+        /// <returns>A creature that inherits from BaseCreature</returns>
+        BaseCreature CreateCreature<T>(string name, int atk, int def, int hp, CustomRange dmgRange)
+            where T : BaseCreature, new();
     }
 }

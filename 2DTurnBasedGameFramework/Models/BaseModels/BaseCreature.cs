@@ -160,7 +160,8 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         }
 
         /// <summary>
-        /// This method calculates any additional damage, adding it on top of the base damage in the Hit() method.
+        /// This method calculates any additional damage, adding it on top of the base damage (number between Damage.From-Damage.To).
+        /// <para>If you don't know what to add in this method just return the Attack stat.</para>
         /// </summary>
         /// <returns>Damage dealt in addition to base damage</returns>
         public abstract int DamageModifier();

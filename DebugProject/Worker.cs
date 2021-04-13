@@ -29,29 +29,27 @@ namespace DebugProject
             var peasant = creatures.Peasant;
 
             ICreatureFactory creatureFactory = new CreatureFactory();
-            creatureFactory.CreateCreature("", 10, 10, 50, new Range(5, 10));
+            var ogre = creatureFactory.CreateCreature("Ogre", 10, 10, 50, new CustomRange(5, 10));
+
+            var vampire = creatureFactory.CreateCreature<VampiricCreature>("Vampire", 10, 5, 30, new CustomRange(3, 7));
 
             mage.Loot(new Item("Staff", 2));
 
             Console.WriteLine(mage);
-            Console.WriteLine(centaur);
+            Console.WriteLine(vampire);
 
-            CombatLoop(centaur, mage);
+            CombatLoop(vampire, mage);
 
             Logger.Close();
         }
 
-        private void CombatRound(BaseCreature c1, BaseCreature c2)
-        {
-            Console.WriteLine($"{c2.Name} takes {c2.ReceiveHit(c1.Hit())} damage from {c1.Name}.");
-            Console.WriteLine($"{c1.Name} takes {c1.ReceiveHit(c2.Hit())} damage from {c2.Name}.");
-        }
 
         private void CombatLoop(BaseCreature creature1, BaseCreature creature2)
         {
             while (!creature1.IsDead && !creature2.IsDead)
             {
                 CombatRound(creature1, creature2);
+
                 if (creature1.IsDead)
                 {
                     Console.WriteLine($"{creature1.Name} died.");
@@ -73,6 +71,12 @@ namespace DebugProject
                     Console.WriteLine(creature2);
                 }
             }
+        }
+
+        private void CombatRound(BaseCreature c1, BaseCreature c2)
+        {
+            Console.WriteLine($"{c2.Name} takes {c2.ReceiveHit(c1.Hit())} damage from {c1.Name}.");
+            Console.WriteLine($"{c1.Name} takes {c1.ReceiveHit(c2.Hit())} damage from {c2.Name}.");
         }
 
         private void Loot(BaseCreature corpse, BaseCreature looter)

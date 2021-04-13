@@ -5,7 +5,7 @@ using CustomRange = _2DTurnBasedGameFramework.Helpers.CustomRange;
 namespace _2DTurnBasedGameFramework.AbstractFactory.CreatureProducts
 {
     /// <summary>
-    /// A generic creature. Used in the creation of new creatures in the CreatureFactory.
+    /// An instantiable generic creature. Used in the creation of new creatures in the CreatureFactory.
     /// </summary>
     public class GenericCreature : BaseCreature
     {
