@@ -11,7 +11,10 @@ namespace _2DTurnBasedGameFramework.Prefabs
     public class PrefabCreatures
     {
         // TODO: make Ready-For-Use creatures and items (in the Prefabs folder), for someone to set up a game fast.
+        
         private static readonly ICreatureFactory Factory = new CreatureFactory();
+
+        // Note: should probably be returned through methods, not properties.
 
         // Creatures (from weak, to strong)
         // Tier 1

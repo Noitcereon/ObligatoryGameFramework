@@ -7,6 +7,9 @@ using _2DTurnBasedGameFramework.Models.BaseModels;
 
 namespace _2DTurnBasedGameFramework.Interfaces
 {
+    /// <summary>
+    /// Defines a basic world containing a width and a height (X and Y).
+    /// </summary>
     public interface IWorld
     {
         /// <summary>

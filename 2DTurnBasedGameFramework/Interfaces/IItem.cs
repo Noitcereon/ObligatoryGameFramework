@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace _2DTurnBasedGameFramework.Interfaces
 {
+    /// <summary>
+    /// Interface descriping a basic item.
+    /// </summary>
     public interface IItem : IStats
     {
         /// <summary>
