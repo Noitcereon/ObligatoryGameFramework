@@ -34,12 +34,14 @@ namespace DebugProject
             var vampire = creatureFactory.CreateCreature<VampiricCreature>("Vampire", 10, 5, 30, new CustomRange(3, 7));
 
             vampire.Attach(world);
+            ogre.Attach(world);
+
             mage.Loot(new Item("Staff", 2));
 
             Console.WriteLine(mage);
             Console.WriteLine(vampire);
 
-            CombatLoop(vampire, mage);
+            CombatLoop(vampire, ogre);
 
             Logger.Close();
         }

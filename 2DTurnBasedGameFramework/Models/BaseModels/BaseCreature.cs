@@ -29,7 +29,10 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             set
             {
                 _isDead = value;
-                Notify();
+                if (_isDead)
+                {
+                    Notify();
+                }
             }
         }
         /// <inheritdoc />
@@ -221,7 +224,7 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
         /// <inheritdoc />
         public void Attach(IObserver observer)
         {
-            if(_observers == null) _observers = new List<IObserver>();
+            if (_observers == null) _observers = new List<IObserver>();
             if (_observers.Contains(observer)) return; // prevent the same observer from observing multiple times.
             _observers.Add(observer);
         }
