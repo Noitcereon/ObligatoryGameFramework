@@ -70,33 +70,31 @@ namespace DebugProject
                 else if (!creature2.IsDead && creature1.IsDead)
                 {
                     Loot(creature1, creature2);
-                    
                     Console.WriteLine(creature2);
                 }
             }
         }
 
-        private void CombatRound(BaseCreature c1, BaseCreature c2)
+        private void CombatRound(BaseCreature creature1, BaseCreature creature2)
         {
-            Console.WriteLine($"{c2.Name} takes {c2.ReceiveHit(c1.Hit())} damage from {c1.Name}.");
-            Console.WriteLine($"{c1.Name} takes {c1.ReceiveHit(c2.Hit())} damage from {c2.Name}.");
+            Console.WriteLine($"{creature2.Name} takes {creature2.ReceiveHit(creature1.Hit())} damage from {creature1.Name}.");
+            Console.WriteLine($"{creature1.Name} takes {creature1.ReceiveHit(creature2.Hit())} damage from {creature2.Name}.");
         }
 
         private void Loot(BaseCreature corpse, BaseCreature looter)
         {
             Console.WriteLine($"{looter.Name} loots {corpse.Name}'s corpse.");
-            if (corpse.Items.Count == 0)
+            if (corpse.Items.Count == 0 || corpse.Items == null)
             {
                 Console.WriteLine($"{looter.Name} found nothing.");
+                return;
             }
-            else
+
+            Console.WriteLine($"{looter.Name} picked up: ");
+            foreach (var item in corpse.Items)
             {
-                Console.WriteLine($"{looter.Name} picked up: ");
-                foreach (var item in corpse.Items)
-                {
-                    looter.Loot(item);
-                    Console.WriteLine($"- {item.Name}");
-                }
+                looter.Loot(item);
+                Console.WriteLine($"- {item.Name}");
             }
         }
     }

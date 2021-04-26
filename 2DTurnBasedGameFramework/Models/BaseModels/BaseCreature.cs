@@ -143,12 +143,11 @@ namespace _2DTurnBasedGameFramework.Models.BaseModels
             if (worldObject.Item != null)
             {
                 Loot(worldObject.Item);
+                return;
             }
-            else
-            {
-                // The behaviour of a non-item world object, when interacted with.
-                worldObject.OnInteraction(this);
-            }
+
+            // The behaviour of a non-item world object, when interacted with.
+            worldObject.OnInteraction(this);
         }
 
         /// <inheritdoc />

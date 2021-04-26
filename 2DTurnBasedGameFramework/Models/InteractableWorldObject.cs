@@ -69,7 +69,7 @@ namespace _2DTurnBasedGameFramework.Models
                 _actionOnInteraction.Invoke(creature);
                 if (IsRemovable)
                 {
-                    Notify(); // Notifies the World it is placed in that it should be removed.
+                    Notify(); // Notifies the World, it is placed in, that it should be removed.
                 }
             }
             catch (Exception e)
